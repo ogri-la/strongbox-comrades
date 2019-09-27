@@ -1,0 +1,15 @@
+*~
+*.swp
+*.log
+.rebel_readline_history
+/target
+/classes
+/checkouts
+*.jar
+*.class
+/.lein-*
+/.nrepl-port
+.eastwood
+.vagrant/
+resources/public/js/compiled/
+
