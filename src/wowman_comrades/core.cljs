@@ -5,6 +5,29 @@
 
 (enable-console-print!)
 
+(defn apply-all
+  [data fn-list]
+  (if (empty? fn-list)
+    data
+    (let [f (first fn-list)]
+      (apply-all (f data) (rest fn-list)))))
+
+;; https://stackoverflow.com/questions/24553524/how-to-drop-the-nth-item-in-a-collection-in-clojure
+(defn drop-nth [n coll]
+  (concat 
+    (take n coll)
+    (drop (inc n) coll)))
+
+(defn find-column-idx
+  [column-name csv-head]
+  (let [idx-if-eq (fn [[idx val]]
+                    (if (map? val)
+                      (when (= (:name val) column-name) idx)
+                      (when (= val column-name) idx)))]
+    (->> csv-head (map-indexed vector) (map idx-if-eq) (remove nil?) first)))
+
+;;
+
 (def comrades (str "name,url,Linux,Mac,Windows,UI,retail?,classic?,f/oss?,source available?,ads?,EULA?,language
 antiwinter/wowa,https://github.com/antiwinter/wowa,yes*,yes*,yes*,CLI,yes,yes,yes,yes,no,no,Javascript
 braier/wow-addon-updater,https://www.braier.net/wow-addon-updater/index.html,yes,yes,yes,GUI,yes,no,yes,yes,no,no,Pascal
@@ -26,7 +49,18 @@ Tukui Client,https://www.tukui.org/download.php?client=win,no,no,yes,GUI,yes,no,
 vargen2/Addon,https://github.com/vargen2/Addon,no,no,yes,GUI,yes,yes,yes,yes,no,no,C#
 WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,yes,no,yes,yes,no,no,Javascript"))
 
-(def columns-with-options [:linux :mac :windows :ui :retail? :classic? :f-oss? :source-available? :ads? :eula? :language])
+(defn -project-hyperlink
+  [row]
+  (let [name (first row)
+        url (second row)]
+    (into [{:href url :label name}] row)))
+
+(defn project-hyperlink
+  "adds a new first column that is a map of the next two columns"
+  [csv-data]
+  (let [header (into [{:label "project" :name :project}] (first csv-data))
+        body (rest csv-data)]
+    (into [header] (mapv -project-hyperlink body))))
 
 ;;
 
@@ -41,22 +75,29 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,y
   (-> text
       clojure.string/lower-case
       (clojure.string/replace #"[ _/]+" "-")
-      keyword)) 
+      keyword))
 
-(defn process-header
+(defn header-options
+  "convert the values in the first row to a map of {:label '...' :name '...' :options [...]}"
   [csv-data]
   (let [header (first csv-data)
+        columns-with-options [:linux :mac :windows :ui :retail? :classic? :f-oss? :source-available? :ads? :eula? :language]
         processor (fn [[column-idx text]]
                     (let [slug (keywordify text)]
                       {:label text
                        :name slug
                        :unique-values (when (some #{slug} columns-with-options)
-                                        (into ["any" "---"] (unique-column-values column-idx (rest csv-data))))}))
-        ]
-    (for [pair (map-indexed vector header)]
-      (processor pair))))
+                                        (into [text "---"] (unique-column-values column-idx (rest csv-data))))}))
+        new-header-row (for [pair (map-indexed vector header)]
+                         (processor pair))]
+    (into [new-header-row] (rest csv-data))))
 
-;;
+(defn drop-column
+  [column-name csv-data]
+  (let [idx (find-column-idx column-name (first csv-data))]
+    (mapv #(drop-nth idx %) csv-data)))
+
+;; components
 
 (rum/defc dropdown
   [option-list]
@@ -69,40 +110,47 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,y
   [:tr
    (for [data header-data]
      [:th {}
-      (:label data)
-      (when-not (empty? (:unique-values data))
+      (if (empty? (:unique-values data))
+        (:label data)
         (dropdown (:unique-values data)))])])
 
 (rum/defc csv-row
   [row]
   [:tr {}
    (for [text row]
-     [:td {} text])])
+     [:td {}
+      (if (map? text)
+        [:a {:href (:href text)} (:label text)]
+        text)
+      ])])
 
 (rum/defc csv-body
   [row-list]
   [:tbody {}
    (mapv csv-row row-list)])
 
+;; bootstrap
+
+(def transformations [header-options
+                      project-hyperlink
+                      (partial drop-column :name)
+                      (partial drop-column :url)])
+
 (rum/defc root-component
   []
   (let [csv-data (csv/read-csv comrades)
-        ;; convert the values in the first row to a map of {:label "..." :name "..." :options [...]}
-        csv-header-data (vec (process-header csv-data))
+        csv-data (apply-all csv-data transformations)
         ]
     [:table {}
-     (csv-header csv-header-data) ;; csv-header-data)
+     (csv-header (first csv-data))
      (csv-body (rest csv-data))]))
 
 (defn start
   []
-  (rum/mount (root-component) (-> js/document (.getElementById "app"))))  
+  (rum/mount (root-component) (-> js/document (.getElementById "app"))))
 
 (defn on-js-reload []
   (println "(reloading)")
   (start))
 
 (start)
-
-
-
