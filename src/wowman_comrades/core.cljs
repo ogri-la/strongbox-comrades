@@ -26,6 +26,8 @@ Tukui Client,https://www.tukui.org/download.php?client=win,no,no,yes,GUI,yes,no,
 vargen2/Addon,https://github.com/vargen2/Addon,no,no,yes,GUI,yes,yes,yes,yes,no,no,C#
 WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,yes,no,yes,yes,no,no,Javascript"))
 
+(def columns-with-options [:linux :mac :windows :ui :retail? :classic? :f-oss? :source-available? :ads? :eula? :language])
+
 ;;
 
 (defn unique-column-values
@@ -43,26 +45,33 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,y
 
 (defn process-header
   [csv-data]
-  (let [columns-with-options [:linux :mac :windows :ui :retail? :classic? :foss? :source-available? :ads? :eula? :language]
-        header (first csv-data)
+  (let [header (first csv-data)
         processor (fn [[column-idx text]]
                     (let [slug (keywordify text)]
                       {:label text
                        :name slug
                        :unique-values (when (some #{slug} columns-with-options)
-                                        (unique-column-values column-idx (rest csv-data)))}))
+                                        (into ["any" "---"] (unique-column-values column-idx (rest csv-data))))}))
         ]
     (for [pair (map-indexed vector header)]
       (processor pair))))
 
 ;;
 
+(rum/defc dropdown
+  [option-list]
+  [:select {}
+   (for [option option-list]
+     [:option {} option])]) 
+
 (rum/defc csv-header
   [header-data]
   [:tr
    (for [data header-data]
      [:th {}
-      [(:label data)]])])
+      (:label data)
+      (when-not (empty? (:unique-values data))
+        (dropdown (:unique-values data)))])])
 
 (rum/defc csv-row
   [row]
@@ -81,7 +90,6 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,y
         ;; convert the values in the first row to a map of {:label "..." :name "..." :options [...]}
         csv-header-data (vec (process-header csv-data))
         ]
-    (println (unique-column-values 0 csv-data))
     [:table {}
      (csv-header csv-header-data) ;; csv-header-data)
      (csv-body (rest csv-data))]))
