@@ -7,9 +7,14 @@
 
 (def rum-deref rum/react)
 
+(def unselected "")
+
 (def -state-template
   {:csv-data nil
-   :selected {}
+   :selected {:ads? "no"
+              :eula? "no"
+              :maintained? "yes"
+              :source-available? "yes"}
    })
 
 (def state (atom -state-template))
@@ -106,7 +111,7 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,y
                       {:label text
                        :name slug
                        :option-list (when (some #{slug} columns-with-options)
-                                        (into [text "---"] (unique-column-values column-idx (rest csv-data))))}))
+                                        (into [unselected] (unique-column-values column-idx (rest csv-data))))}))
         new-header-row (for [pair (map-indexed vector header)]
                          (processor pair))]
     (into [new-header-row] (rest csv-data))))
@@ -118,11 +123,19 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,y
 
 ;; components
 
-(rum/defc dropdown
+(defn in?
+  [v coll]
+  (println "val" v "coll" coll)
+  (let [res (-> v set (some coll) empty? not)]
+    (println "res" res)
+    res))
+
+(rum/defc dropdown < rum/reactive 
   [{:keys [name label option-list]}]
-  [:select {:on-change (fn [ev]
+  [:select {:value (-> state rum-deref :selected name (or unselected))
+            :on-change (fn [ev]
                          (let [val (.. ev -target -value)]
-                           (if (some #{val} [label "---"])
+                           (if (= val unselected)
                              (swap! state update-in [:selected] dissoc name)
                              (swap! state assoc-in [:selected name] val))))}
    (for [option option-list]
@@ -134,8 +147,8 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,y
   [:tr
    (for [data header-data]
      [:th {}
-      (if (empty? (:option-list data))
-        (:label data)
+      (:label data)
+      (when-not (empty? (:option-list data))
         (dropdown data))])])
 
 (rum/defc csv-row
@@ -144,7 +157,9 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,y
    (for [text row]
      [:td {}
       (if (map? text)
-        [:a {:href (:href text)} (:label text)]
+        [:a {:href (:href text)
+             :target "_blank"}
+         (:label text)]
         text)
       ])])
 
@@ -166,24 +181,28 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,y
         csv-data (apply-all csv-data transformations)
 
         header-idx-list (column-map csv-data) ;; {:ads? 9, :windows 3, ...}
-        _ (println header-idx-list)
+        ;;_ (println header-idx-list)
 
         header (first csv-data)
         body (rest csv-data)
         
         fltr (fn [[column-name match-value]]
-               (println "got" column-name match-value)
+               ;;(println "got" column-name match-value)
                (fn [row]
-                 (println "got row" row)
-                 (= match-value (nth row (column-name header-idx-list)))))
+                 ;;(println "got row" row)
+                 (if-let [col-idx (column-name header-idx-list)]
+                   (= match-value (nth row col-idx))
+                   (do
+                     (println (goog.string/format "column '%s' not found! ignoring" column-name))
+                     true))))
 
         selected-headers (:selected (rum-deref state))
-        _ (println "selected headers" selected-headers)
+        ;;_ (println "selected headers" selected-headers)
         
         fltrfn (if-not (empty? selected-headers)
                  (apply every-pred (map fltr selected-headers))
                  identity)
-        _ (println "filterfn" fltrfn)
+        ;;_ (println "filterfn" fltrfn)
         
         body (filter fltrfn body)
         ]
