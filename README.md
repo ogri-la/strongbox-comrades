@@ -5,9 +5,12 @@ A web interface for [wowman's](https://github.com/ogri-la/wowman)
 
 ## Overview
 
-This `.csv` file I maintain has gotten large and difficult to simply follow. 
+The `comrades.csv` file I maintain has gotten large and difficult to simply follow.
 
-I'd like to point people at a site and have it mostly pre-filtered for them.
+I'd like to point people at a site and have it mostly pre-filtered for them, with the opportunity to explore further if
+they wish.
+
+I'd also like a bit more distance/transparency/neutrality between wowman and visitors to this list.
 
 ## Local development
 
