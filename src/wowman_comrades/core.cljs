@@ -5,6 +5,17 @@
 
 (enable-console-print!)
 
+(def rum-deref rum/react)
+
+(def -state-template
+  {:csv-data nil
+   :selected {}
+   })
+
+(def state (atom -state-template))
+
+;;
+
 (defn apply-all
   [data fn-list]
   (if (empty? fn-list)
@@ -25,6 +36,14 @@
                       (when (= (:name val) column-name) idx)
                       (when (= val column-name) idx)))]
     (->> csv-head (map-indexed vector) (map idx-if-eq) (remove nil?) first)))
+
+(defn column-map
+  [csv-data]
+  (let [idx-if-eq (fn [[idx val]]
+                    (if (map? val)
+                      {(:name val) idx}
+                      {val idx}))]
+    (->> csv-data first (map-indexed vector) (map idx-if-eq) (into {}))))
 
 ;;
 
@@ -86,7 +105,7 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,y
                     (let [slug (keywordify text)]
                       {:label text
                        :name slug
-                       :unique-values (when (some #{slug} columns-with-options)
+                       :option-list (when (some #{slug} columns-with-options)
                                         (into [text "---"] (unique-column-values column-idx (rest csv-data))))}))
         new-header-row (for [pair (map-indexed vector header)]
                          (processor pair))]
@@ -100,19 +119,24 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,y
 ;; components
 
 (rum/defc dropdown
-  [option-list]
-  [:select {}
+  [{:keys [name label option-list]}]
+  [:select {:on-change (fn [ev]
+                         (let [val (.. ev -target -value)]
+                           (if (some #{val} [label "---"])
+                             (swap! state update-in [:selected] dissoc name)
+                             (swap! state assoc-in [:selected name] val))))}
    (for [option option-list]
-     [:option {} option])]) 
+     [:option {}
+      option])])
 
 (rum/defc csv-header
   [header-data]
   [:tr
    (for [data header-data]
      [:th {}
-      (if (empty? (:unique-values data))
+      (if (empty? (:option-list data))
         (:label data)
-        (dropdown (:unique-values data)))])])
+        (dropdown data))])])
 
 (rum/defc csv-row
   [row]
@@ -136,21 +160,52 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,y
                       (partial drop-column :name)
                       (partial drop-column :url)])
 
-(rum/defc root-component
+(rum/defc root-component < rum/reactive
   []
-  (let [csv-data (csv/read-csv comrades)
+  (let [csv-data (:csv-data (rum-deref state))
         csv-data (apply-all csv-data transformations)
+
+        header-idx-list (column-map csv-data) ;; {:ads? 9, :windows 3, ...}
+        _ (println header-idx-list)
+
+        header (first csv-data)
+        body (rest csv-data)
+        
+        fltr (fn [[column-name match-value]]
+               (println "got" column-name match-value)
+               (fn [row]
+                 (println "got row" row)
+                 (= match-value (nth row (column-name header-idx-list)))))
+
+        selected-headers (:selected (rum-deref state))
+        _ (println "selected headers" selected-headers)
+        
+        fltrfn (if-not (empty? selected-headers)
+                 (apply every-pred (map fltr selected-headers))
+                 identity)
+        _ (println "filterfn" fltrfn)
+        
+        body (filter fltrfn body)
         ]
     [:table {}
-     (csv-header (first csv-data))
-     (csv-body (rest csv-data))]))
+     (csv-header header)
+     (csv-body body)]))
 
 (defn start
   []
   (rum/mount (root-component) (-> js/document (.getElementById "app"))))
 
-(defn on-js-reload []
+(defn init
+  []
+  (println "(init)") 
+  (let [csv-data (csv/read-csv comrades)
+        new-state {:csv-data csv-data}]
+    (swap! state merge new-state)))
+
+(defn on-js-reload
+  []
   (println "(reloading)")
+  (init)
   (start))
 
-(start)
+(on-js-reload)
