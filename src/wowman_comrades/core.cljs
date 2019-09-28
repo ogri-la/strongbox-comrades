@@ -11,10 +11,10 @@
 
 (def -state-template
   {:csv-data nil
-   :selected {:ads? "no"
-              :eula? "no"
-              :maintained? "yes"
-              :source-available? "yes"}
+   :selected {:ads "no"
+              :eula "no"
+              :maintained "yes"
+              :source-available "yes"}
    })
 
 (def state (atom -state-template))
@@ -52,26 +52,34 @@
 
 ;;
 
-(def comrades (str "name,url,Linux,Mac,Windows,UI,retail?,classic?,f/oss?,source available?,ads?,EULA?,language
-antiwinter/wowa,https://github.com/antiwinter/wowa,yes*,yes*,yes*,CLI,yes,yes,yes,yes,no,no,Javascript
-braier/wow-addon-updater,https://www.braier.net/wow-addon-updater/index.html,yes,yes,yes,GUI,yes,no,yes,yes,no,no,Pascal
-cursebreaker,https://github.com/AcidWeb/CurseBreaker,no,no,yes,TUI^,yes,yes,yes,yes,no,no,Python
-dark0dave/wow-addon-updater,https://gitlab.com/dark0dave/wow-addon-updater,yes*,yes,yes,CLI,yes,yes,yes,yes,no,no,python
-erikabp123/ClassicAddonManager,https://github.com/erikabp123/ClassicAddonManager,no,no,yes,GUI,no,yes,yes,yes,no,no,Java
-GitAddonsManager,https://gitlab.com/woblight/GitAddonsManager,yes,?,?,GUI,yes,no,yes,yes,no,no,C++
-grrttedwards/wow-addon-updater,https://github.com/grrttedwards/wow-addon-updater,yes*,yes,yes,CLI,yes,yes,yes,yes,no,no,python
-instawow,https://github.com/layday/instawow,yes*,yes*,yes*,CLI,yes,yes,yes,yes,no,no,Python
-karolswdev/wow,https://github.com/karolswdev/wow,no,no,yes,CLI,no,yes,no,yes,no,no,C#
-lcurse,https://github.com/ephraim/lcurse,yes,no,no,GUI,yes,no,no,yes,no,no,Python
-Lund259/WoW-Addon-Manager,https://github.com/Lund259/WoW-Addon-Manager,no,no,yes,GUI,yes,no,yes,yes,no,no,C#
-Minion,https://minion.mmoui.com/,yes*,yes,yes,GUI,yes,yes,no,no,yes,yes,Java
-nazarov-tech/wowa,https://github.com/nazarov-tech/wowa,yes*,yes*,yes,CLI,yes,no,yes,yes,no,no,Python
-OpenAddOnManager,https://github.com/OpenAddOnManager/OpenAddOnManager,no,no,yes,GUI,yes,no,yes,yes,no,no,C#
-qwezarty/wow-addon-manager,https://github.com/qwezarty/wow-addon-manager,yes*,no,no,CLI,yes,no,yes,yes,no,no,Python
-Saionaro/wow-addons-updater,https://github.com/Saionaro/wow-addons-updater,yes,yes,yes,GUI,yes,no,yes,yes,no,no,Javascript
-Tukui Client,https://www.tukui.org/download.php?client=win,no,no,yes,GUI,yes,no,no,no,?,?,?
-vargen2/Addon,https://github.com/vargen2/Addon,no,no,yes,GUI,yes,yes,yes,yes,no,no,C#
-WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,yes,no,yes,yes,no,no,Javascript"))
+(def comrades (str "Name,URL,Maintained,Linux,Mac,Windows,UI,Retail,Classic,F/OSS,Source Available,Ads,EULA,Language
+DayBr3ak/wow-better-cli,https://github.com/DayBr3ak/wow-better-cli,no,yes*,yes*,yes*,CLI,yes,no,yes,yes,no,no,Javascript
+JonasKnarbakk/GWAM,https://github.com/JonasKnarbakk/GWAM,no,yes*,yes*,yes*,GUI,yes,no,yes,yes,no,no,C++
+kuhnertdm/wow-addon-updater,https://github.com/kuhnertdm/wow-addon-updater,no,yes*,yes,yes,CLI,yes,no,yes,yes,no,no,Python
+SeriousBug/WoWutils,https://github.com/SeriousBug/WoWutils,no,yes,no,no,CLI,yes,no,yes,yes,no,no,Bash
+sysworx/wowam,https://github.com/sysworx/wowam,no,no,yes,yes,GUI,yes,no,no,yes,no,yes*,XOJO
+vargen2/addon-manager,https://github.com/vargen2/addonmanager,no,no,no,yes*,GUI,yes,no,yes,yes,no,no,Java
+WoWAceUpdater,https://sourceforge.net/projects/wowaceupdater/,no,no,no,yes,GUI,yes,no,yes,yes,?,?,?
+wttw/wowaddon,https://github.com/wttw/wowaddon,no,yes,yes,yes,CLI,yes,no,yes,yes,no,no,Go
+antiwinter/wowa,https://github.com/antiwinter/wowa,yes,yes*,yes*,yes*,CLI,yes,yes,yes,yes,no,no,Javascript
+AvidWeb/cursebreaker,https://github.com/AcidWeb/CurseBreaker,yes,no,no,yes,TUI,yes,yes,yes,yes,no,no,Python
+braier/wow-addon-updater,https://www.braier.net/wow-addon-updater/index.html,yes,yes,yes,yes,GUI,yes,no,yes,yes,no,no,Pascal
+dark0dave/wow-addon-updater,https://gitlab.com/dark0dave/wow-addon-updater,yes,yes*,yes,yes,CLI,yes,yes,yes,yes,no,no,Python
+ephraim/lcurse,https://github.com/ephraim/lcurse,yes,yes,no,no,GUI,yes,no,no,yes,no,no,Python
+erikabp123/ClassicAddonManager,https://github.com/erikabp123/ClassicAddonManager,yes,no,no,yes,GUI,no,yes,yes,yes,no,no,Java
+grrttedwards/wow-addon-updater,https://github.com/grrttedwards/wow-addon-updater,yes,yes*,yes,yes,CLI,yes,yes,yes,yes,no,no,Python
+karolswdev/wow,https://github.com/karolswdev/wow,yes,no,no,yes,CLI,no,yes,no,yes,no,no,C#
+layday/instawow,https://github.com/layday/instawow,yes,yes*,yes*,yes*,CLI,yes,yes,yes,yes,no,no,Python
+Lund259/WoW-Addon-Manager,https://github.com/Lund259/WoW-Addon-Manager,yes,no,no,yes,GUI,yes,no,yes,yes,no,no,C#
+Minion,https://minion.mmoui.com/,yes,yes*,yes,yes,GUI,yes,yes,no,no,yes,yes,Java
+nazarov-tech/wowa,https://github.com/nazarov-tech/wowa,yes,yes*,yes*,yes,CLI,yes,no,yes,yes,no,no,Python
+OpenAddOnManager,https://github.com/OpenAddOnManager/OpenAddOnManager,yes,no,no,yes,GUI,yes,no,yes,yes,no,no,C#
+qwezarty/wow-addon-manager,https://github.com/qwezarty/wow-addon-manager,yes,yes*,no,no,CLI,yes,no,yes,yes,no,no,Python
+Saionaro/wow-addons-updater,https://github.com/Saionaro/wow-addons-updater,yes,yes,yes,yes,GUI,yes,no,yes,yes,no,no,Javascript
+Tukui Client,https://www.tukui.org/download.php?client=win,yes,no,no,yes,GUI,yes,no,no,no,?,?,?
+vargen2/Addon,https://github.com/vargen2/Addon,yes,no,no,yes,GUI,yes,yes,yes,yes,no,no,C#
+woblight/GitAddonsManager,https://gitlab.com/woblight/GitAddonsManager,yes,yes,no,yes,GUI,yes,no,yes,yes,no,no,C++
+WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes,yes*,yes*,yes,GUI,yes,no,yes,yes,no,no,Javascript"))
 
 (defn -project-hyperlink
   [row]
@@ -105,7 +113,7 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes*,yes*,yes,GUI,y
   "convert the values in the first row to a map of {:label '...' :name '...' :options [...]}"
   [csv-data]
   (let [header (first csv-data)
-        columns-with-options [:linux :mac :windows :ui :retail? :classic? :f-oss? :source-available? :ads? :eula? :language]
+        columns-with-options [:maintained :linux :mac :windows :ui :retail :classic :f-oss :source-available :ads :eula :language]
         processor (fn [[column-idx text]]
                     (let [slug (keywordify text)]
                       {:label text
