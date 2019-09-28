@@ -1,12 +1,15 @@
 # wowman-comrades
 
-FIXME: Write a one-line description of your library/project.
+A web interface for [wowman's](https://github.com/ogri-la/wowman) 
+[comrades.csv](https://github.com/ogri-la/wowman/blob/develop/comrades.csv) file.
 
 ## Overview
 
-FIXME: Write a paragraph about the library/project and highlight its goals.
+This `.csv` file I maintain has gotten large and difficult to simply follow. 
 
-## Setup
+I'd like to point people at a site and have it mostly pre-filtered for them.
+
+## Local development
 
 To get an interactive development environment run:
 
@@ -14,12 +17,7 @@ To get an interactive development environment run:
 
 and open your browser at [localhost:3449](http://localhost:3449/).
 This will auto compile and send all changes to the browser without the
-need to reload. After the compilation process is complete, you will
-get a Browser Connected REPL. An easy way to try it is:
-
-    (js/alert "Am I connected?")
-
-and you should see an alert in the browser window.
+need to reload.
 
 To clean all compiled files:
 
@@ -34,6 +32,6 @@ get live reloading, nor a REPL.
 
 ## License
 
-Copyright © 2014 FIXME
+Copyright © 2019 Torkus
 
 Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.

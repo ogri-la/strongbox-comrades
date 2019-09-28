@@ -13,6 +13,9 @@
     - tick with caveat? 
         - "  ✓*  "
         - looks kinda shit
+* 'reset' link
+    - removes all selections
+* change licence to AGPL
 
 # 0.2.0 release
 
