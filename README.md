@@ -12,6 +12,8 @@ they wish.
 
 I'd also like a bit more distance/transparency/neutrality between wowman and visitors to this list.
 
+[![wowman-comrades](./screenshots/pre-release.png)](./screenshots/pre-release.png?raw=true) 
+
 ## Local development
 
 To get an interactive development environment run:
