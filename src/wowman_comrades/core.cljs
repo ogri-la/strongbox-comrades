@@ -189,28 +189,28 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes,yes*,yes*,yes,G
         csv-data (apply-all csv-data transformations)
 
         header-idx-list (column-map csv-data) ;; {:ads? 9, :windows 3, ...}
-        ;;_ (println header-idx-list)
 
         header (first csv-data)
         body (rest csv-data)
         
         fltr (fn [[column-name match-value]]
-               ;;(println "got" column-name match-value)
                (fn [row]
-                 ;;(println "got row" row)
-                 (if-let [col-idx (column-name header-idx-list)]
-                   (= match-value (nth row col-idx))
+                 (if-let [col-idx (column-name header-idx-list)
+                          row-value (nth row col-idx)]
+                   (if (= match-value "yes*") ;; 'yes*' also means 'yes'
+                     (or
+                      (= match-value row-value)
+                      (= "yes" row-value))
+                     (= match-value row-value))
                    (do
                      (println (goog.string/format "column '%s' not found! ignoring" column-name))
                      true))))
 
         selected-headers (:selected (rum-deref state))
-        ;;_ (println "selected headers" selected-headers)
         
         fltrfn (if-not (empty? selected-headers)
                  (apply every-pred (map fltr selected-headers))
                  identity)
-        ;;_ (println "filterfn" fltrfn)
         
         body (filter fltrfn body)
         ]

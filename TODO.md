@@ -1,6 +1,11 @@
 # 0.1.0 release
 
+## done
+
 * 'yes' and 'yes\*' need to be linked. 'yes' is 'yes' without caveats. 'yes\*' is both 'yes' and 'yes*' with caveats
+
+## todo
+
 * some tests, any tests
 * CI
     - maybe investigate Github actions?
@@ -18,6 +23,8 @@
 * change licence to AGPL
 
 # 0.2.0 release
+
+## todo
 
 * group results
 * determine user's platform based on user agent (if windows, select windows, etc)
