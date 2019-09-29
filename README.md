@@ -3,6 +3,8 @@
 A web interface for [wowman's](https://github.com/ogri-la/wowman) 
 [comrades.csv](https://github.com/ogri-la/wowman/blob/develop/comrades.csv) file.
 
+[![wowman-comrades](./screenshots/pre-release.png)](./screenshots/pre-release.png?raw=true) 
+
 ## Overview
 
 The `comrades.csv` file I maintain has gotten large and difficult to simply follow.
@@ -11,8 +13,6 @@ I'd like to point people at a site and have it mostly pre-filtered for them, wit
 they wish.
 
 I'd also like a bit more distance/transparency/neutrality between wowman and visitors to this list.
-
-[![wowman-comrades](./screenshots/pre-release.png)](./screenshots/pre-release.png?raw=true) 
 
 ## Local development
 
