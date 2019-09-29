@@ -21,6 +21,10 @@
 
 ;;
 
+(defn format
+  [string & args]
+  (apply goog.string/format string args))
+
 (defn apply-all
   [data fn-list]
   (if (empty? fn-list)
@@ -133,10 +137,7 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes,yes*,yes*,yes,G
 
 (defn in?
   [v coll]
-  (println "val" v "coll" coll)
-  (let [res (-> v set (some coll) empty? not)]
-    (println "res" res)
-    res))
+  (not (empty? (some #{v} coll))))
 
 (rum/defc dropdown < rum/reactive 
   [{:keys [name label option-list]}]
@@ -195,16 +196,17 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes,yes*,yes*,yes,G
         
         fltr (fn [[column-name match-value]]
                (fn [row]
-                 (if-let [col-idx (column-name header-idx-list)
-                          row-value (nth row col-idx)]
-                   (if (= match-value "yes*") ;; 'yes*' also means 'yes'
-                     (or
-                      (= match-value row-value)
-                      (= "yes" row-value))
-                     (= match-value row-value))
-                   (do
-                     (println (goog.string/format "column '%s' not found! ignoring" column-name))
-                     true))))
+                 (let [col-idx (column-name header-idx-list)
+                       row-value (nth row col-idx)]
+                   (if-not col-idx
+                     ;; code/configuration error, we should know about this
+                     (do
+                       (println (format "column '%s' not found! ignoring" column-name))
+                       true)
+
+                     (if (= match-value "yes*") ;; 'yes*' also means 'yes'
+                       (in? row-value [match-value "yes"])
+                       (= match-value row-value))))))
 
         selected-headers (:selected (rum-deref state))
         
@@ -224,7 +226,7 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes,yes*,yes*,yes,G
 
 (defn init
   []
-  (println "(init)") 
+  (println "(init)")
   (let [csv-data (csv/read-csv comrades)
         new-state {:csv-data csv-data}]
     (swap! state merge new-state)))
