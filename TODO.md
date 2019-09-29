@@ -13,6 +13,20 @@
 
 ## todo
 
+* add some kind of process for updating comrades.csv
+    - manage in this repository
+    - on merge to master
+        - compile javascript
+        - copy compiled files to website
+        - commit
+        - split comrades.csv into two, maintained and not
+            - create a branch on wowman
+            - update README
+            - open a PR
+* add link *back* to wowman 'other addon managers'
+* add description, declare bias
+* add link for submitting an update
+    - link should go to wowman-comrades repo, not wowman
 * options available in dropdowns should become more limited as filters narrow
 * CI
     - maybe investigate Github actions?
@@ -26,6 +40,7 @@
 
 ## todo
 
+* add simplified no-javascript rendering
 * replace booleans with ticks and crosses
     - preserve text label in dropdown
     - tick with caveat? 
