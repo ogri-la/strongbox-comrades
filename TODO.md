@@ -6,6 +6,8 @@
 
 ## todo
 
+* options available in dropdowns should become more limited as filters narrow
+* handle warnings
 * some tests, any tests
 * CI
     - maybe investigate Github actions?
