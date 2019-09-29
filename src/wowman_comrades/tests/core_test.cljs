@@ -45,13 +45,7 @@
                      ["foo+Bar & baz" :foo-bar-baz]]
           ]
       (doseq [[given expected] case-list]
-        (is (= expected (core/keywordify given))))))
-
-  
-  
-  
-  )
-    
+        (is (= expected (core/keywordify given)))))))
 
 (defn run
   []

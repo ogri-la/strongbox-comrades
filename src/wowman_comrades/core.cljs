@@ -7,21 +7,24 @@
 
 (enable-console-print!)
 
-(def rum-deref rum/react)
+(def comrades (macro/compile-time-comrades-csv)) ;; compile-time data
+
+(def rum-deref rum/react) ;; just an alias, I find 'react' confusing
 
 (def unselected "")
 
 (def -state-template
   {:csv-data nil
+
+   ;; default selections
    :selected {:ads "no"
               :eula "no"
               :maintained "yes"
-              :source-available "yes"}
-   })
+              :source-available "yes"}})
 
 (def state (atom -state-template))
 
-;;
+;; utils
 
 (defn info
   [msg]
@@ -66,7 +69,7 @@
         (clojure.string/replace #"[ _/]+" "-")
         keyword)))
 
-;;
+;; matrix wrangling
 
 (defn find-column-idx
   [column-name csv-head]
@@ -85,8 +88,6 @@
     (->> csv-data first (map-indexed vector) (map idx-if-eq) (into {}))))
 
 ;;
-
-(def comrades (macro/compile-time-comrades-csv))
 
 (defn -project-hyperlink
   [row]
@@ -181,18 +182,18 @@
 
 (rum/defc root-component < rum/reactive
   []
-  (let [csv-data (:csv-data (rum-deref state))
+  (let [csv-data (-> state rum-deref :csv-data)
         csv-data (apply-all csv-data transformations)
 
         header-idx-list (column-map csv-data) ;; {:ads? 9, :windows 3, ...}
 
-        header (first csv-data)
-        body (rest csv-data)
-        
+        ;; give a key+val, returns a predicate that accepts a csv row
+        ;; returns true if given `key` in given `row` matches given `val`
+        ;; if given `val` is "yes*", then that also matches "yes" (without asterisk)
         fltr (fn [[column-name match-value]]
                (fn [row]
                  (let [col-idx (column-name header-idx-list)
-                       row-value (nth row col-idx)]
+                       row-value (when col-idx (nth row col-idx))]
                    (if-not col-idx
                      ;; code/configuration error, we should know about this
                      (do
@@ -208,8 +209,9 @@
         fltrfn (if-not (empty? selected-headers)
                  (apply every-pred (map fltr selected-headers))
                  identity)
-        
-        body (filter fltrfn body)
+
+        header (first csv-data)        
+        body (filter fltrfn (rest csv-data))
         ]
     [:table {}
      (csv-header header)
@@ -221,7 +223,7 @@
 
 (defn init
   []
-  (info "init!")
+  (info "init")
   (let [csv-data (csv/read-csv comrades)
         new-state {:csv-data csv-data}]
     (swap! state merge new-state)))
