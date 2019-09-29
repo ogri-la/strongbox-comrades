@@ -3,11 +3,11 @@
 ## done
 
 * 'yes' and 'yes\*' need to be linked. 'yes' is 'yes' without caveats. 'yes\*' is both 'yes' and 'yes*' with caveats
+* handle warnings
 
 ## todo
 
 * options available in dropdowns should become more limited as filters narrow
-* handle warnings
 * some tests, any tests
 * CI
     - maybe investigate Github actions?

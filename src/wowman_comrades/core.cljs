@@ -25,7 +25,11 @@
 
 (defn info
   [msg]
-  (println "[:info]" msg))
+  (js/console.info "[:info]" msg))
+
+(defn warn
+  [msg]
+  (js/console.warn "[:warn]" msg))
 
 (defn format
   [string & args]
@@ -180,7 +184,7 @@
                    (if-not col-idx
                      ;; code/configuration error, we should know about this
                      (do
-                       (println (format "column '%s' not found! ignoring" column-name))
+                       (warn (format "column '%s' not found! ignoring" column-name))
                        true)
 
                      (if (= match-value "yes*") ;; 'yes*' also means 'yes'
