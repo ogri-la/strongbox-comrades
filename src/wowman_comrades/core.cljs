@@ -23,6 +23,10 @@
 
 ;;
 
+(defn info
+  [msg]
+  (println "[:info]" msg))
+
 (defn format
   [string & args]
   (apply goog.string/format string args))
@@ -201,14 +205,14 @@
 
 (defn init
   []
-  (println "(init)")
+  (info "init!")
   (let [csv-data (csv/read-csv comrades)
         new-state {:csv-data csv-data}]
     (swap! state merge new-state)))
 
 (defn on-js-reload
   []
-  (println "(reloading)")
+  (info "reloading")
   (init)
   (start))
 
