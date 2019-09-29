@@ -25,11 +25,18 @@
 
 (defn info
   [msg]
-  (js/console.info "[:info]" msg))
+  (js/console.info "[:info]" msg)
+  nil)
 
 (defn warn
   [msg]
-  (js/console.warn "[:warn]" msg))
+  (js/console.warn "[:warn]" msg)
+  nil)
+
+(defn error
+  [msg]
+  (js/console.error "[:error]" msg)
+  nil)
 
 (defn format
   [string & args]
@@ -47,6 +54,19 @@
   (concat 
     (take n coll)
     (drop (inc n) coll)))
+
+(defn keywordify
+  "'Source Available?' => :source-available?, 'f/oss?' => :f-oss?"
+  [text]
+  (if (empty? text)
+    nil
+    (-> text
+        clojure.string/lower-case
+        (clojure.string/replace #"[^a-zA-Z0-9- ?]" " ")
+        (clojure.string/replace #"[ _/]+" "-")
+        keyword)))
+
+;;
 
 (defn find-column-idx
   [column-name csv-head]
@@ -87,14 +107,6 @@
   "returns a list of unique values for the given column"
   [column-idx csv-data]
   (distinct (map #(nth % column-idx) csv-data)))
-
-(defn keywordify
-  "'Source Available?' => :source-available?, 'f/oss?' => :f-oss?"
-  [text]
-  (-> text
-      clojure.string/lower-case
-      (clojure.string/replace #"[ _/]+" "-")
-      keyword))
 
 (defn header-options
   "convert the values in the first row to a map of {:label '...' :name '...' :options [...]}"
