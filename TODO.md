@@ -1,19 +1,13 @@
-# 0.1.0 release
+# 0.2.0 release
 
 ## done
 
-* 'yes' and 'yes\*' need to be linked. 'yes' is 'yes' without caveats. 'yes\*' is both 'yes' and 'yes*' with caveats
-* handle warnings
-* some tests, any tests
-* compilation with tree shaking. 
-    - I want a tiny little static website. no bullshit
-        - I can get a 256KB minified .js file that includes the contents of comrades.csv
-            - see README for compilation instructions
-            - good enough
-* lein pom
-
 ## todo
 
+* url parameters to pre-select fields
+    - need to match these fields to the slugfidied field names
+    - need to ensure field names can be specified explicitly in case the column string ever changes
+        - don't want urls in message boards with broken parameters
 * add some kind of process for updating comrades.csv
     - manage in this repository
     - on merge to master
@@ -35,19 +29,20 @@
 * 'reset' link
     - removes all selections
 * change licence to AGPL
-* last, update wowman README with link to picker
 
-# 0.2.0 release
-
-## todo
+## todo bucket
 
 * add simplified no-javascript rendering
+    - is this even possible in a SLA?
+    - just a static will do
 * replace booleans with ticks and crosses
     - preserve text label in dropdown
     - tick with caveat? 
         - "  ✓*  "
         - looks kinda shit
 * group results
+    - recursive grouping is fun, but lets limit this to one group at a time
+        - 'platform' I think
 * determine user's platform based on user agent (if windows, select windows, etc)
     - perhaps a standard platform profile? 
         - a 'windows' profile gets unambiguous windows 'yes', 'gui'
