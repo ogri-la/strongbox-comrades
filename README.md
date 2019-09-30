@@ -5,15 +5,6 @@ A [website](https://ogri-la.github.io/wow-addon-managers/) for wowman's
 
 [![wowman-comrades](./screenshots/0.1.0.png)](./screenshots/0.1.0.png?raw=true) 
 
-## Overview
-
-The `comrades.csv` file I maintain has gotten large and difficult to simply follow.
-
-I'd like to point people at a site and have it mostly pre-filtered for them, with the opportunity to explore further if
-they wish.
-
-I'd also like a bit more distance/transparency/neutrality between wowman and visitors to this list.
-
 ## Local development
 
 To get an interactive development environment run:
