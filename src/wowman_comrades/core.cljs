@@ -1,7 +1,9 @@
 (ns wowman-comrades.core
   (:require
    [testdouble.cljs.csv :as csv]
-   [rum.core :as rum])
+   [rum.core :as rum]
+   [secretary.core :refer-macros [defroute]]
+   )
   (:require-macros
    [wowman-comrades.macro :as macro]))
 
@@ -217,9 +219,21 @@
      (csv-header header)
      (csv-body body)]))
 
+;;
+
+;; these are behaving weird because they are macros ...?
+;; new routes require a page refresh
+(defroute index "/" [query-params]
+  (info (str "params:" (pr-str query-params))))
+
+;;
+
 (defn start
   []
-  (rum/mount (root-component) (-> js/document (.getElementById "app"))))
+  (rum/mount (root-component) (-> js/document (.getElementById "app")))
+  (secretary.core/dispatch! (index {:query-params {:foo "bar"}})) ;; works
+  (secretary.core/dispatch! "/?maintained=yes*") ;; also works
+  )
 
 (defn init
   []
