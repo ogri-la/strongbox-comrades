@@ -10,6 +10,7 @@
         - I can get a 256KB minified .js file that includes the contents of comrades.csv
             - see README for compilation instructions
             - good enough
+* lein pom
 
 ## todo
 
