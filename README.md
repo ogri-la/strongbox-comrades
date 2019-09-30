@@ -4,7 +4,7 @@ A web interface for [wowman's](https://github.com/ogri-la/wowman)
 [comrades.csv](https://github.com/ogri-la/wowman/blob/develop/comrades.csv) file, 
 [available here](https://ogri-la.github.io/wow-addon-managers/)
 
-[![wowman-comrades](./screenshots/0.1.0.png)](./screenshots/0.1.0?raw=true) 
+[![wowman-comrades](./screenshots/0.1.0.png)](./screenshots/0.1.0.png?raw=true) 
 
 ## Overview
 
