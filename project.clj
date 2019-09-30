@@ -1,8 +1,8 @@
-(defproject wowman-comrades "0.1.0-SNAPSHOT"
-  :description "FIXME: write this!"
-  :url "http://example.com/FIXME"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+(defproject ogri-la/wowman-comrades "0.2.0-unreleased"
+  :description "wowman comrades.csv SPA"
+  :url "https://github.com/ogri-la/wowman-comrades"
+  :license {:name "GNU Affero General Public License (AGPL)"
+            :url "https://www.gnu.org/licenses/agpl-3.0.en.html"}
 
   :min-lein-version "2.9.1"
 
@@ -11,10 +11,17 @@
                  [org.clojure/core.async  "0.4.500"]
                  [testdouble/clojurescript.csv "0.4.3"]
                  [rum "0.11.3"]
+
+                 ;; remember to update the LICENCE.txt
+                 ;; remember to update pom file (`lein pom`)
+
                  ]
 
   :plugins [[lein-figwheel "0.5.19"]
             [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]]
+
+  ;; not possible apparently: https://github.com/bhauman/lein-figwheel/issues/614
+  :main wowman-comrades.core
 
   :source-paths ["src"]
 

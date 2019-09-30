@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>wowman-comrades</groupId>
+  <groupId>ogri-la</groupId>
   <artifactId>wowman-comrades</artifactId>
   <packaging>jar</packaging>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>0.2.0-unreleased</version>
   <name>wowman-comrades</name>
-  <description>FIXME: write this!</description>
-  <url>http://example.com/FIXME</url>
+  <description>wowman comrades.csv SPA</description>
+  <url>https://github.com/ogri-la/wowman-comrades</url>
   <licenses>
     <license>
-      <name>Eclipse Public License</name>
-      <url>http://www.eclipse.org/legal/epl-v10.html</url>
+      <name>GNU Affero General Public License (AGPL)</name>
+      <url>https://www.gnu.org/licenses/agpl-3.0.en.html</url>
     </license>
   </licenses>
   <scm>
     <url>https://github.com/ogri-la/wowman-comrades</url>
     <connection>scm:git:git://github.com/ogri-la/wowman-comrades.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/ogri-la/wowman-comrades.git</developerConnection>
-    <tag>b81dc4126b70ebb1a0a1c9575e30648d7858944b</tag>
+    <tag>27baf1edf1731e51cec86f734d07458bb6088c06</tag>
   </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>

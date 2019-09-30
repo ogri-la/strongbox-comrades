@@ -2,6 +2,8 @@
 
 ## done
 
+* change licence to AGPL
+
 ## todo
 
 * url parameters to pre-select fields
@@ -28,7 +30,6 @@
         - https://github.com/features/actions
 * 'reset' link
     - removes all selections
-* change licence to AGPL
 
 ## todo bucket
 
