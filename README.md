@@ -30,4 +30,4 @@ get live reloading, nor a REPL.
 
 Copyright © 2019 Torkus
 
-Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
+Distributed under the GNU Affero General Public Licence, version 3 [with additional permissions](LICENCE.txt#L665)
