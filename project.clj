@@ -15,8 +15,7 @@
                  ;; remember to update the LICENCE.txt
                  ;; remember to update pom file (`lein pom`)
 
-                 [clj-commons/secretary "1.2.4"]
-
+                 [cljs-http "0.1.46"]
                  ]
 
   :plugins [[lein-figwheel "0.5.19"]

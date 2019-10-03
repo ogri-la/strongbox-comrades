@@ -2,7 +2,7 @@
   (:require
    [testdouble.cljs.csv :as csv]
    [rum.core :as rum]
-   [secretary.core :refer-macros [defroute]]
+   [cljs-http.client :as http]
    )
   (:require-macros
    [wowman-comrades.macro :as macro]))
@@ -30,7 +30,7 @@
 
 (defn info
   [msg]
-  (js/console.info "[:info]" msg)
+  (js/console.info "[:info]" (if (string? msg) msg (pr-str msg)))
   nil)
 
 (defn warn
@@ -221,18 +221,28 @@
 
 ;;
 
-;; these are behaving weird because they are macros ...?
-;; new routes require a page refresh
-(defroute index "/" [query-params]
-  (info (str "params:" (pr-str query-params))))
+
+(defn parse-field-params
+  []
+  (let [query-params (-> js/window.location.href http/parse-url :query-params)
+        ;; at this point the query parameters could be *anything* the user sent us
+        ;; however we only want *specific* parameters that look like :field/<known-csv-column>
+        known-csv-columns (-> @state :csv-data first keys)
+
+        ;; now, the above would be nice however the csv-data isn't parsed until the root component
+        ;; renders itself.
+
+        ;; lets get the csv data into a basic processed state before doing any clever transformations
+
+        ]
+    (info query-params)))
 
 ;;
 
 (defn start
   []
   (rum/mount (root-component) (-> js/document (.getElementById "app")))
-  (secretary.core/dispatch! (index {:query-params {:foo "bar"}})) ;; works
-  (secretary.core/dispatch! "/?maintained=yes*") ;; also works
+  ;;(parse-field-params)
   )
 
 (defn init
