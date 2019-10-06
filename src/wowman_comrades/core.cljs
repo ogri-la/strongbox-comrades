@@ -76,7 +76,6 @@
         ;; strips out any keywords that don't match a known field
         ;; strips out any values that are too long
         supported-query-params (kv-filter (fn [key val]
-                                            (info known-csv-columns)
                                             (and
                                              (in? (namespace key) ["field" "hide"])
                                              (in? (-> key name keyword) known-csv-columns)
@@ -86,7 +85,6 @@
 
 (defn update-selected-fields!
   [user-params]
-  (info "user params" user-params)
   (let [;; only fields in the 'field' namespace
         user-params (kv-filter #(= "field" (namespace %1)) user-params)
         user-params (kv-map #(vector (-> %1 name keyword) %2) user-params)]

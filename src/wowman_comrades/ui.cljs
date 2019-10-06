@@ -1,7 +1,7 @@
 (ns wowman-comrades.ui
   (:require
    [wowman-comrades.core :as core]
-   [wowman-comrades.utils :as utils :refer [debug info warn error spy]]
+   [wowman-comrades.utils :as utils :refer [debug info warn error spy kv-map format]]
    [rum.core :as rum]
    ))
 
@@ -21,7 +21,6 @@
 
 (rum/defc dropdown
   [name {:keys [label option-list]}]
-  ;;(info "name" name "label" label "option-list" option-list)
   (let [option-list (into [""] option-list)]
     [:select {:value (-> @core/state :selected-fields name (or unselected))
               :on-change (fn [ev]
@@ -60,6 +59,25 @@
         label)
       ])])
 
+(rum/defc perma-link
+  "creates a link to the report as it's currently configured"
+  []
+  (let [query-string (mapv (fn [[k v]]
+                             (format "%s=%s" (->> k name (str "field/")) v))
+                           (:selected-fields @core/state :selected-fields))
+        query-string (clojure.string/join "&" query-string)
+
+        abs-url (format "%s//%s%s"
+                        js/window.location.protocol
+                        js/window.location.host
+                        js/window.location.pathname)
+        abs-url (if-not (empty? query-string)
+                  (str abs-url "?" query-string)
+                  abs-url)]
+    [:small
+     [:a {:href abs-url}
+      "permalink"]]))
+
 (rum/defc csv-body
   [row-list field-list]
   [:tbody {}
@@ -89,9 +107,11 @@
         header (first csv-data)
         body (filter fltrfn (rest csv-data))
         field-list (:field-order state)]
-    [:table {}
-     (csv-header header field-list)
-     (csv-body body field-list)]))
+    [:div
+     (perma-link)
+     [:table {}
+      (csv-header header field-list)
+      (csv-body body field-list)]]))
 
 (defn start
   [dom-element]

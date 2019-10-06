@@ -6,7 +6,7 @@
 
 (defn format
   [string & args]
-  (apply goog.string/format string args))
+  (apply goog.string/format string (map str args)))
 
 (defn -log
   [level & msg-list]
