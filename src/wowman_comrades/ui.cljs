@@ -9,16 +9,6 @@
 
 (def unselected "")
 
-(defn column-map
-  [csv-data]
-  (let [idx-if-eq (fn [[idx val]]
-                    (if (map? val)
-                      {(:name val) idx}
-                      {val idx}))]
-    (->> csv-data first (map-indexed vector) (map idx-if-eq) (into {}))))
-
-;;
-
 (rum/defc dropdown
   [name {:keys [label option-list]}]
   (let [option-list (into [""] option-list)]
