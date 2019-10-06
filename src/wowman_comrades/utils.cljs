@@ -2,7 +2,7 @@
 
 (defn in?
   [v coll]
-  (not (empty? (some #{v} coll))))
+  ((complement not) (some #{v} coll)))
 
 (defn format
   [string & args]
@@ -52,3 +52,14 @@
         (clojure.string/replace #"[^a-zA-Z0-9- ?]" " ")
         (clojure.string/replace #"[ _/]+" "-")
         keyword)))
+
+(defn kv-map
+  [f coll]
+  (into {} (map (fn [[k v]]
+                  (f k v)) coll)))
+
+(defn kv-filter
+  [f coll]
+  (into {} (filter (fn [[k v]]
+                     (f k v))
+                   coll)))
