@@ -4,28 +4,30 @@
   [v coll]
   (not (empty? (some #{v} coll))))
 
-(defn debug
-  [msg]
-  (js/console.debug "[:debug]" msg))
-
-(defn info
-  [msg]
-  (js/console.info "[:info]" (if (string? msg) msg (pr-str msg)))
-  nil)
-
-(defn warn
-  [msg]
-  (js/console.warn "[:warn]" msg)
-  nil)
-
-(defn error
-  [msg]
-  (js/console.error "[:error]" msg)
-  nil)
-
 (defn format
   [string & args]
   (apply goog.string/format string args))
+
+(defn -log
+  [level & msg-list]
+  (let [levels {:debug js/console.debug
+                :info js/console.info
+                :warn js/console.warn
+                :error js/console.error
+                :spy js/console.info}
+        lede (format "[%s]" (name level))]
+    (apply (get levels level) lede (mapv pr-str msg-list)))
+  nil)
+
+(def debug (partial -log :debug))
+(def info (partial -log :info))
+(def warn (partial -log :warn))
+(def error (partial -log :error))
+
+(defn spy
+  [x]
+  (-log :spy x)
+  x)
 
 (defn apply-all
   [data fn-list]
