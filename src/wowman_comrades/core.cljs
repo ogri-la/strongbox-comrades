@@ -87,7 +87,7 @@
   [user-params]
   (let [;; only fields in the 'field' namespace
         user-params (kv-filter #(= "field" (namespace %1)) user-params)
-        user-params (kv-map #(vector (-> %1 name keyword) %2) user-params)]
+        user-params (kv-map #(vector (-> %1 name keyword) (or %2 "")) user-params)]
     (when-not (empty? user-params)
       ;; overrides default selected fields
       (swap! state assoc :selected-fields user-params))))

@@ -84,9 +84,14 @@
         fltr (fn [[column-name match-value]]
                (fn [row]
                  (let [row-value (column-name row)]
-                   (if (= match-value "yes*") ;; 'yes*' also means 'yes'
-                     (utils/in? row-value [match-value "yes"])
-                     (= match-value row-value)))))
+                   (cond
+                     ;; 'yes*' also means 'yes'
+                     (= match-value "yes*") (utils/in? row-value [match-value "yes"])
+
+                     ;; empty string means "don't filter"
+                     (= match-value "") true
+
+                     :else (= match-value row-value)))))
 
         selected-headers (:selected-fields state)
         
