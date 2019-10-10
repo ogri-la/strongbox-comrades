@@ -1,19 +1,10 @@
 (ns wowman-comrades.utils
   (:require
-   [goog.string]
-   [cuerdas.core :as str])
-  (:import 
-   goog.string))
+   [cuerdas.core :as str]))
 
 (defn in?
   [v coll]
   ((complement not) (some #{v} coll)))
-
-;; advanced compilation doesn't like this and I couldn't figure out why :(
-;; cuerdas has loads of good stuff though: https://funcool.github.io/cuerdas/latest/
-;;(defn format
-;;  [string & args]
-;;  (apply goog.string/format string (map str args)))
 
 (def format str/format)
 
@@ -25,8 +16,7 @@
                 :error js/console.error
                 :spy js/console.info}
         func (get levels level)
-        ;;lede (format "[%s]" (name level))
-        lede (str "[" (name level) "]")
+        lede (format "[%s]" (name level))
         args (mapv pr-str msg-list)]
     (when func
       (apply func lede args)))
