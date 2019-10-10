@@ -16,6 +16,7 @@
                  ;; remember to update pom file (`lein pom`)
 
                  [cljs-http "0.1.46"]
+                 [funcool/cuerdas "2.2.0"]
                  ]
 
   :plugins [[lein-figwheel "0.5.19"]
@@ -56,6 +57,7 @@
                 :compiler {:output-to "resources/public/js/compiled/wowman_comrades.js"
                            :main wowman-comrades.main
                            :optimizations :advanced
+                           ;;:pseudo-names true
                            :pretty-print false}}]}
 
   :figwheel {;; :http-server-root "public" ;; default and assumes "resources"
