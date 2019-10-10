@@ -38,6 +38,7 @@
 
 ## todo bucket
 
+* update address bar with selected field changes so user can use 'back' button to undo selections
 * add simplified no-javascript rendering
     - is this even possible in a SLA?
     - just a static will do
