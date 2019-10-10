@@ -3,13 +3,20 @@
 ## done
 
 * change licence to AGPL
+* url parameters to pre-select fields
+    - need to match these fields to the slugified field names
+        - field names are no longer slugified from the labels but tied to field order in csv
+    - need to ensure field names can be specified explicitly in case the column string ever changes
+        - don't want urls in message boards with broken parameters
+            - field names are no longer slugified from the labels but tied to field order in csv
+            - field name drift is now less likely to happen
+    - done
+        - added a permalink widget that will always get you back to your selection
 
 ## todo
 
-* url parameters to pre-select fields
-    - need to match these fields to the slugfidied field names
-    - need to ensure field names can be specified explicitly in case the column string ever changes
-        - don't want urls in message boards with broken parameters
+* 'reset' link
+    - removes all selections
 * add some kind of process for updating comrades.csv
     - manage in this repository
     - on merge to master
@@ -28,8 +35,6 @@
 * CI
     - maybe investigate Github actions?
         - https://github.com/features/actions
-* 'reset' link
-    - removes all selections
 
 ## todo bucket
 
