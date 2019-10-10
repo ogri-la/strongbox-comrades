@@ -15,13 +15,15 @@
                  ;; remember to update the LICENCE.txt
                  ;; remember to update pom file (`lein pom`)
 
+                 [cljs-http "0.1.46"]
+                 [funcool/cuerdas "2.2.0"]
                  ]
 
   :plugins [[lein-figwheel "0.5.19"]
             [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]]
 
   ;; not possible apparently: https://github.com/bhauman/lein-figwheel/issues/614
-  :main wowman-comrades.core
+  ;;:main wowman-comrades.core
 
   :source-paths ["src"]
 
@@ -32,14 +34,14 @@
                 ;; The presence of a :figwheel configuration here
                 ;; will cause figwheel to inject the figwheel client
                 ;; into your build
-                :figwheel {:on-jsload "wowman-comrades.core/on-js-reload"
+                :figwheel {:on-jsload "wowman-comrades.main/on-js-reload"
                            ;; :open-urls will pop open your application
                            ;; in the default browser once Figwheel has
                            ;; started and compiled your application.
                            ;; Comment this out once it no longer serves you.
                            :open-urls ["http://localhost:3449/index.html"]}
 
-                :compiler {:main wowman-comrades.core
+                :compiler {:main wowman-comrades.main
                            :asset-path "js/compiled/out"
                            :output-to "resources/public/js/compiled/wowman_comrades.js"
                            :output-dir "resources/public/js/compiled/out"
@@ -53,8 +55,9 @@
                {:id "min"
                 :source-paths ["src"]
                 :compiler {:output-to "resources/public/js/compiled/wowman_comrades.js"
-                           :main wowman-comrades.core
+                           :main wowman-comrades.main
                            :optimizations :advanced
+                           ;;:pseudo-names true
                            :pretty-print false}}]}
 
   :figwheel {;; :http-server-root "public" ;; default and assumes "resources"
