@@ -6,6 +6,8 @@
   (:require-macros
    [wowman-comrades.macro :as macro]))
 
+(def unselected "")
+
 (def comrades (macro/compile-time-comrades-csv)) ;; compile-time data
 
 ;; order the fields are read in
@@ -13,20 +15,66 @@
 
 (def -state-template
   {;; fields are displayed in the order they are read in by default
+   ;; this doubles as a means to hide fields
    :field-order -field-order
 
    ;; fields that can be selected
    :selectable-fields [:maintained :linux :mac :windows :ui :retail :classic :f-oss :source-available :ads :eula :language]
+
+   ;; name and description of selected configuration
+   :profile nil
    
    ;; default selections for fields that can be selected
-   :selected-fields {:ads "no"
-                     :eula "no"
-                     :maintained "yes"
-                     :source-available "yes"}
+   :selected-fields {}
 
    :csv-data nil})
 
 (def state (atom -state-template))
+
+(def profiles
+  {:default {:description "the configuration you when visiting the page for the first time"
+             :selected-fields {:ads "no" :eula "no" :maintained "yes" :source-available "yes"}}
+   
+   :no-selections {:description "all selectable fields are unselected"
+                   :selected-fields (zipmap (:selectable-fields -state-template) (repeat unselected))}
+
+   :simple {:description "simple view for simple folk"
+            :field-order [:project :windows :mac]
+            :selected-fields {:maintained "yes"
+                              :windows "yes*"
+                              :retail "yes" :classic "yes"
+                              :ui "GUI"}}
+
+   :linux {:description "good choices for Linux users"
+           :field-order [:project :retail :classic :ui :f-oss :source-available :ads :eula :language]
+           :selected-fields {:maintained "yes"
+                             :linux "yes*"
+                             :source-available "yes"
+                             :ads "no" :eula "no"
+                             :retail "yes" :classic "yes"}}
+   
+   :mac {:description "good choices for mac users"
+         :field-order [:project :retail :classic :ui :ads :eula]
+         :selected-fields {:maintained "yes"
+                           :mac "yes*"
+                           :retail "yes" :classic "yes"}}
+
+   :windows {:description "good choices for windows users"
+             :field-order [:project :retail :classic :ui :ads :eula]
+             :selected-fields {:maintained "yes"
+                               :windows "yes"
+                               :retail "yes" :classic "yes"}}
+   
+   :perfect {:description "Torkus' perfect addon manager (doesn't exist)"
+             :selected-fields {:maintained "yes"
+                               :windows "yes" :mac "yes" :linux "yes"
+                               :ui "GUI"
+                               :retail "yes" :classic "yes"
+                               :ads "no" :eula "no" :f-oss "yes"}}
+   })
+
+;;
+
 
 (defn rows-to-maps
   "converts a regular array of values into a keyed map.
@@ -94,6 +142,17 @@
 
 ;;
 
+(defn set-profile!
+  "merges the predefined configuration in a profile over the current state"
+  [profile-key]
+  (let [profile-config (get profiles profile-key)
+        extra-config {:profile {:name profile-key
+                                :description (:description profile-config)}}]
+    (swap! state merge (:safe-state @state) extra-config profile-config))
+  nil)
+
+;;
+
 (defn init
   "read the data in, parse it into a list of maps, set the initial app state"
   []
@@ -107,8 +166,15 @@
 
         new-field-order (into [:project] -field-order)
         new-state {:csv-data csv-data
-                   :field-order new-field-order}]
-    (swap! state merge new-state))
+                   :field-order new-field-order
+
+                   ;; configuration profiles are merged over the top of this
+                   ;; ensures changes don't accumulate in weird ways
+                   :safe-state {:field-order new-field-order
+                                :selected-fields (:selected-fields -state-template)}
+                   }]
+    (swap! state merge new-state)
+    (set-profile! :default))
 
   (let [user-params (parse-user-params)]
     (update-selected-fields! user-params))

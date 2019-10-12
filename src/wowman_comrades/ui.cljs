@@ -1,13 +1,11 @@
 (ns wowman-comrades.ui
   (:require
-   [wowman-comrades.core :as core]
+   [wowman-comrades.core :as core :refer [unselected]]
    [wowman-comrades.utils :as utils :refer [debug info warn error spy kv-map format]]
    [rum.core :as rum]
    ))
 
 (def rum-deref rum/react) ;; just an alias, I find 'react' confusing
-
-(def unselected "")
 
 (rum/defc dropdown
   [name {:keys [label option-list]}]
