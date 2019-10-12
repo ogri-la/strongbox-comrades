@@ -35,6 +35,9 @@
 * CI
     - maybe investigate Github actions?
         - https://github.com/features/actions
+* basic styling
+    - if column headers are centred, centre values
+    - alternate row colours
 
 ## todo bucket
 
