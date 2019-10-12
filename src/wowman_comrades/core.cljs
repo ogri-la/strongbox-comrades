@@ -32,18 +32,18 @@
 (def state (atom -state-template))
 
 (def profiles
-  {:default {:description "the configuration you when visiting the page for the first time"
+  {:default {:description "standard configuration, good for everybody"
              :selected-fields {:ads "no" :eula "no" :maintained "yes" :source-available "yes"}}
    
-   :no-selections {:description "all selectable fields are unselected"
-                   :selected-fields (zipmap (:selectable-fields -state-template) (repeat unselected))}
+   :unfiltered {:description "no filtering, ordered by 'maintained', then by 'name'"
+                :selected-fields (zipmap (:selectable-fields -state-template) (repeat unselected))}
 
-   :simple {:description "simple view for simple folk"
-            :field-order [:project :windows :mac]
-            :selected-fields {:maintained "yes"
-                              :windows "yes*"
-                              :retail "yes" :classic "yes"
-                              :ui "GUI"}}
+   :simplistic {:description "simple view for simple folk"
+                :field-order [:project :windows :mac]
+                :selected-fields {:maintained "yes"
+                                  :windows "yes*"
+                                  :retail "yes" :classic "yes"
+                                  :ui "GUI"}}
 
    :linux {:description "good choices for Linux users"
            :field-order [:project :retail :classic :ui :f-oss :source-available :ads :eula :language]
@@ -65,7 +65,7 @@
                                :windows "yes"
                                :retail "yes" :classic "yes"}}
    
-   :perfect {:description "Torkus' perfect addon manager (doesn't exist)"
+   :perfect {:description "the perfect addon manager (doesn't exist)"
              :selected-fields {:maintained "yes"
                                :windows "yes" :mac "yes" :linux "yes"
                                :ui "GUI"
