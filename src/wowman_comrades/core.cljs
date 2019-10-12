@@ -32,8 +32,8 @@
 (def state (atom -state-template))
 
 (def profiles
-  {:default {:description "standard configuration, good for everybody"
-             :selected-fields {:ads "no" :eula "no" :maintained "yes" :source-available "yes"}}
+  {:default {:description "some basic filtering, good for everybody"
+             :selected-fields {:maintained "yes" :classic "yes"}}
    
    :unfiltered {:description "no filtering, ordered by 'maintained', then by 'name'"
                 :selected-fields (zipmap (:selectable-fields -state-template) (repeat unselected))}
