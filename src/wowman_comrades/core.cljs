@@ -35,15 +35,17 @@
   {:default {:description "some basic filtering, good for everybody"
              :selected-fields {:maintained "yes" :classic "yes"}}
    
-   :unfiltered {:description "no filtering, ordered by 'maintained', then by 'name'"
+   :unfiltered {:description "no filtering, ordered by 'maintained' and then by 'name'"
                 :selected-fields (zipmap (:selectable-fields -state-template) (repeat unselected))}
 
-   :simplistic {:description "simple view for simple folk"
-                :field-order [:project :windows :mac]
-                :selected-fields {:maintained "yes"
-                                  :windows "yes*"
-                                  :retail "yes" :classic "yes"
-                                  :ui "GUI"}}
+   :snarky {:description [:a {:href "https://store.steampowered.com/hwsurvey/Steam-Hardware-Software-Survey-Welcome-to-Steam?platform=combined"
+                              :target "_blank"}
+                          "\"statistically, this is probably for you\""]
+            :field-order [:project :windows :retail :classic]
+            :selected-fields {:maintained "yes"
+                              :windows "yes"
+                              :retail "yes" :classic "yes"
+                              :ui "GUI"}}
 
    :linux {:description "good choices for Linux users"
            :field-order [:project :retail :classic :ui :f-oss :source-available :ads :eula :language]
@@ -65,7 +67,7 @@
                                :windows "yes"
                                :retail "yes" :classic "yes"}}
    
-   :perfect {:description "the perfect addon manager (doesn't exist)"
+   :perfect {:description "my perfect addon manager (doesn't exist)"
              :selected-fields {:maintained "yes"
                                :windows "yes" :mac "yes" :linux "yes"
                                :ui "GUI"
@@ -164,7 +166,7 @@
                      (drop-column :name)
                      (drop-column :url))
 
-        new-field-order (into [:project] -field-order)
+        new-field-order (into [:project] (remove #{:name :url} -field-order))
         new-state {:csv-data csv-data
                    :field-order new-field-order
 

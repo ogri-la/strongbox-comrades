@@ -87,12 +87,15 @@
         on-select-callback (fn [ev]
                              (core/set-profile! (keyword (ev-val ev)))
                              nil)
+        description (-> @core/state :profile :description)
         ]
     [:div
      (dropdown "presets" available-profiles on-select-callback
                :default-value-fn #(-> @core/state :profile :name name))
      [:quote
-      (format "\"%s\"" (-> @core/state :profile :description))]]))
+      (if (string? description)
+        (format "\"%s\"" description)
+        description)]]))
 
 (rum/defc csv-body
   [row-list field-list]
