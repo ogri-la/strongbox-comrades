@@ -120,6 +120,9 @@
         ;; however we only want *specific* parameters that look like :field/<known-csv-column>
         known-csv-columns (-> @state :csv-data first keys)
 
+        preset-parameters [:name] ;; :preset/name
+        supported-keywords (into preset-parameters known-csv-columns)
+
         max-val-len (inc (count "javascript"))
         
         ;; strips out any query namespaces we're not looking at
@@ -127,22 +130,26 @@
         ;; strips out any values that are too long
         supported-query-params (kv-filter (fn [key val]
                                             (and
-                                             (in? (namespace key) ["field" "hide"])
-                                             (in? (-> key name keyword) known-csv-columns)
+                                             (in? (namespace key) ["field" "preset"])
+                                             (in? (-> key name keyword) supported-keywords)
                                              (> max-val-len (count val))))
                                           query-params)]
     supported-query-params))
 
 (defn update-selected-fields!
-  [user-params]
+  [user-params & {:keys [deepmerge?]}]
   (let [;; only fields in the 'field' namespace
         user-params (kv-filter #(= "field" (namespace %1)) user-params)
-        user-params (kv-map #(vector (-> %1 name keyword) (or %2 "")) user-params)]
+        user-params (kv-map #(vector (-> %1 name keyword) (or %2 "")) user-params)
+        ]
     (when-not (empty? user-params)
-      ;; overrides default selected fields
-      (swap! state assoc :selected-fields user-params))))
+      (if deepmerge?
+        ;; recursive merge of changes, may cause weirdness
+        (swap! state utils/deep-merge {:selected-fields user-params})
+        ;; overrides default selected fields
+        (swap! state assoc :selected-fields user-params))))
+  nil)
 
-;;
 
 (defn set-profile!
   "merges the predefined configuration in a profile over the current state"
@@ -154,6 +161,24 @@
   nil)
 
 ;;
+
+(defn handle-user-params
+  "handles the tricky business of merging multiple types of supported filtering.
+  :field/names can be passed with values as well as :preset/name configuration presets
+  configuration presets are applied first, and then field values over it.
+
+  for example: ?preset/name=unfiltered&field/language=Go
+
+  says 'show me everything in the Go language'. without the :preset/name filter, the
+  'default' preset is used, which would hide addons that are not maintained and don't
+  support classic."
+  [user-params]
+  (let [user-params (spy (parse-user-params))
+        preset (->> user-params keys (some #{:preset/name}) (get user-params) keyword)]
+    
+    (when (get profiles preset)
+      (set-profile! preset))
+    (update-selected-fields! user-params :deepmerge? true)))
 
 (defn init
   "read the data in, parse it into a list of maps, set the initial app state"
@@ -178,8 +203,7 @@
     (swap! state merge new-state)
     (set-profile! :default))
 
-  (let [user-params (parse-user-params)]
-    (update-selected-fields! user-params))
+  (handle-user-params (parse-user-params))
 
   nil)
 

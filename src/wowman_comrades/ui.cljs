@@ -65,9 +65,12 @@
 (rum/defc permalink
   "creates a link to the report as it's currently configured"
   []
-  (let [query-string (mapv (fn [[k v]]
-                             (format "%s=%s" (->> k name (str "field/")) v))
-                           (:selected-fields @core/state :selected-fields))
+  (let [selected-field-list (mapv (fn [[k v]]
+                                    (format "%s=%s" (->> k name (str "field/")) v))
+                                  (:selected-fields @core/state :selected-fields))
+        preset (str "preset/name=" (-> @core/state :profile :name name))
+
+        query-string (into [preset] selected-field-list)
         query-string (clojure.string/join "&" query-string)
 
         abs-url (format "%s//%s%s"
