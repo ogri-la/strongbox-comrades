@@ -42,3 +42,20 @@
   (into {} (filter (fn [[k v]]
                      (f k v))
                    coll)))
+
+;; https://stackoverflow.com/questions/27130961/clojure-deep-merge-to-ignore-nil-values
+(defn deep-merge*
+  [& maps]
+  (let [f (fn [old new]
+             (if (and (map? old) (map? new))
+                 (merge-with deep-merge* old new)
+                 new))]
+    (if (every? map? maps)
+      (apply merge-with f maps)
+     (last maps))))
+
+(defn deep-merge
+  [& maps]
+  (let [maps (filter identity maps)]
+    (assert (every? map? maps))
+   (apply merge-with deep-merge* maps)))

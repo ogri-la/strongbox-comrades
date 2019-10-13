@@ -1,20 +1,33 @@
 (ns wowman-comrades.ui
   (:require
-   [wowman-comrades.core :as core]
+   [wowman-comrades.core :as core :refer [unselected]]
    [wowman-comrades.utils :as utils :refer [debug info warn error spy kv-map format]]
    [rum.core :as rum]
    ))
 
 (def rum-deref rum/react) ;; just an alias, I find 'react' confusing
 
-(def unselected "")
+(defn ev-val
+  [ev]
+  (.. ev -target -value))
 
 (rum/defc dropdown
+  [label option-list callback & {:keys [default-value-fn]}]
+  [:select {:value (if (fn? default-value-fn)
+                     (default-value-fn)
+                     unselected)
+            :on-change callback}
+   [:optgroup {:label label}
+    (for [option (map str option-list)]
+      [:option {}
+       option])]])
+
+(rum/defc field-dropdown
   [name {:keys [label option-list]}]
   (let [option-list (into [""] option-list)]
     [:select {:value (-> @core/state :selected-fields name (or unselected))
               :on-change (fn [ev]
-                           (let [val (.. ev -target -value)]
+                           (let [val (ev-val ev)]
                              (if (= val unselected)
                                (swap! core/state update-in [:selected-fields] dissoc name)
                                (swap! core/state assoc-in [:selected-fields name] val))))}
@@ -32,7 +45,7 @@
       [:th {}
        label
        (when-not (empty? (:option-list val))
-         (dropdown field val))
+         (field-dropdown field val))
        ] ;; /th
       )] ;; /tr
    ]) ;; /thead
@@ -49,12 +62,15 @@
         label)
       ])])
 
-(rum/defc perma-link
+(rum/defc permalink
   "creates a link to the report as it's currently configured"
   []
-  (let [query-string (mapv (fn [[k v]]
-                             (format "%s=%s" (->> k name (str "field/")) v))
-                           (:selected-fields @core/state :selected-fields))
+  (let [selected-field-list (mapv (fn [[k v]]
+                                    (format "%s=%s" (->> k name (str "field/")) v))
+                                  (:selected-fields @core/state :selected-fields))
+        preset (str "preset/name=" (-> @core/state :profile :name name))
+
+        query-string (into [preset] selected-field-list)
         query-string (clojure.string/join "&" query-string)
 
         abs-url (format "%s//%s%s"
@@ -67,6 +83,20 @@
     [:small
      [:a {:href abs-url}
       "permalink"]]))
+
+(rum/defc profile-selection
+  []
+  (let [available-profiles (->> core/profiles keys (map name))
+        on-select-callback (fn [ev]
+                             (core/set-profile! (keyword (ev-val ev))))
+        description (-> @core/state :profile :description)]
+    [:div
+     (dropdown "presets" available-profiles on-select-callback
+               :default-value-fn #(-> @core/state :profile :name name))
+     [:quote
+      (if (string? description)
+        (format "\"%s\"" description)
+        description)]]))
 
 (rum/defc csv-body
   [row-list field-list]
@@ -103,8 +133,11 @@
         body (filter fltrfn (rest csv-data))
         field-list (:field-order state)]
     [:div
-     (perma-link)
+     (profile-selection)
+     (permalink)
+
      [:table {}
+      [:caption "comrades.csv"]
       (csv-header header field-list)
       (csv-body body field-list)]]))
 
