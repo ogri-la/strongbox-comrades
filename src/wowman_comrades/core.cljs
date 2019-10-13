@@ -172,7 +172,7 @@
   'default' preset is used, which would hide addons that are not maintained and don't
   support classic."
   [user-params]
-  (let [user-params (spy (parse-user-params))
+  (let [user-params (parse-user-params)
         preset (->> user-params keys (some #{:preset/name}) (get user-params) keyword)]
     
     (when (get profiles preset)
