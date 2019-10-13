@@ -88,10 +88,8 @@
   []
   (let [available-profiles (->> core/profiles keys (map name))
         on-select-callback (fn [ev]
-                             (core/set-profile! (keyword (ev-val ev)))
-                             nil)
-        description (-> @core/state :profile :description)
-        ]
+                             (core/set-profile! (keyword (ev-val ev))))
+        description (-> @core/state :profile :description)]
     [:div
      (dropdown "presets" available-profiles on-select-callback
                :default-value-fn #(-> @core/state :profile :name name))

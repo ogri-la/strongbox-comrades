@@ -15,16 +15,16 @@
 
 (def -state-template
   {;; fields are displayed in the order they are read in by default
-   ;; this doubles as a means to hide fields
+   ;; this doubles as a means to show/hide fields
    :field-order -field-order
 
    ;; fields that can be selected
    :selectable-fields [:maintained :linux :mac :windows :ui :retail :classic :f-oss :source-available :ads :eula :language]
 
-   ;; name and description of selected configuration
+   ;; map of :name and :description for selected preset
    :profile nil
    
-   ;; default selections for fields that can be selected
+   ;; selections for fields that can be selected
    :selected-fields {}
 
    :csv-data nil})
@@ -140,8 +140,7 @@
   [user-params & {:keys [deepmerge?]}]
   (let [;; only fields in the 'field' namespace
         user-params (kv-filter #(= "field" (namespace %1)) user-params)
-        user-params (kv-map #(vector (-> %1 name keyword) (or %2 "")) user-params)
-        ]
+        user-params (kv-map #(vector (-> %1 name keyword) (or %2 "")) user-params)]
     (when-not (empty? user-params)
       (if deepmerge?
         ;; recursive merge of changes, may cause weirdness
@@ -164,7 +163,7 @@
 
 (defn handle-user-params
   "handles the tricky business of merging multiple types of supported filtering.
-  :field/names can be passed with values as well as :preset/name configuration presets
+  :field/names can be passed with values as well as :preset/name configuration presets.
   configuration presets are applied first, and then field values over it.
 
   for example: ?preset/name=unfiltered&field/language=Go
@@ -196,7 +195,7 @@
                    :field-order new-field-order
 
                    ;; configuration profiles are merged over the top of this
-                   ;; ensures changes don't accumulate in weird ways
+                   ;; to ensure changes do not accumulate in weird ways
                    :safe-state {:field-order new-field-order
                                 :selected-fields (:selected-fields -state-template)}
                    }]
