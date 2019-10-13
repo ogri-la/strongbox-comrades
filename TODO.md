@@ -12,11 +12,11 @@
             - field name drift is now less likely to happen
     - done
         - added a permalink widget that will always get you back to your selection
-
-## todo
-
 * 'reset' link
     - removes all selections
+    
+## todo
+
 * add some kind of process for updating comrades.csv
     - manage in this repository
     - on merge to master
