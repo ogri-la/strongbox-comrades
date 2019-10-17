@@ -14,9 +14,12 @@
         - added a permalink widget that will always get you back to your selection
 * 'reset' link
     - removes all selections
-    
-## todo
+* basic styling
+    - if column headers are centred, centre values
+    - alternate row colours
+    - done
 
+## todo
 * add some kind of process for updating comrades.csv
     - manage in this repository
     - on merge to master
@@ -35,9 +38,6 @@
 * CI
     - maybe investigate Github actions?
         - https://github.com/features/actions
-* basic styling
-    - if column headers are centred, centre values
-    - alternate row colours
 
 ## todo bucket
 

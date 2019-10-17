@@ -86,9 +86,8 @@
         abs-url (if-not (empty? query-string)
                   (str abs-url "?" query-string)
                   abs-url)]
-    [:small
-     [:a {:href abs-url}
-      "permalink"]]))
+    [:a {:href abs-url :id "permalink"}
+     "permalink"]))
 
 (rum/defc profile-selection
   []
@@ -96,7 +95,7 @@
         on-select-callback (fn [ev]
                              (core/set-profile! (keyword (ev-val ev))))
         description (-> @core/state :profile :description)]
-    [:div
+    [:span
      (dropdown "presets" available-profiles on-select-callback
                :default-value-fn #(-> @core/state :profile :name name))
      [:span {:class "quote"}
@@ -139,8 +138,10 @@
         body (filter fltrfn (rest csv-data))
         field-list (:field-order state)]
     [:div
-     (profile-selection)
-     (permalink)
+     [:header
+      (profile-selection)
+      (permalink)]
+
 
      [:table {}
       [:caption "comrades.csv"]
