@@ -7,6 +7,12 @@
 
 (def rum-deref rum/react) ;; just an alias, I find 'react' confusing
 
+(def an-id (atom 0))
+
+(defn get-an-id!
+  []
+  (swap! an-id inc))
+
 (defn ev-val
   [ev]
   (.. ev -target -value))
@@ -19,10 +25,10 @@
             :on-change callback}
    [:optgroup {:label label}
     (for [option (map str option-list)]
-      [:option {}
+      [:option {:key (get-an-id!)}
        option])]])
 
-(rum/defc field-dropdown
+(rum/defc field-dropdown < {:key-fn get-an-id!}
   [name {:keys [label option-list]}]
   (let [option-list (into [""] option-list)]
     [:select {:value (-> @core/state :selected-fields name (or unselected))
@@ -32,17 +38,17 @@
                                (swap! core/state update-in [:selected-fields] dissoc name)
                                (swap! core/state assoc-in [:selected-fields name] val))))}
      (for [option option-list]
-       [:option {}
+       [:option {:key (get-an-id!)}
         option])]))
 
-(rum/defc csv-header
+(rum/defc csv-header < {:key-fn get-an-id!}
   [csv-header field-list]
   [:thead
-   [:tr
+   [:tr {:key (get-an-id!)}
     (for [field field-list
           :let [val (field csv-header)
                 label (or (:label val) val)]]
-      [:th {}
+      [:th {:key (get-an-id!)}
        label
        (when-not (empty? (:option-list val))
          (field-dropdown field val))
@@ -50,13 +56,13 @@
       )] ;; /tr
    ]) ;; /thead
 
-(rum/defc csv-row
+(rum/defc csv-row < {:key-fn get-an-id!}
   [row field-list]
-  [:tr {}
+  [:tr {:key (get-an-id!)}
    (for [field field-list
          :let [val (field row)
                label (or (:label val) val)]]
-     [:td {}
+     [:td {:key (get-an-id!)}
       (if (= :project field)
         [:a {:href (:href val) :target "_blank"} label]
         label)
@@ -93,14 +99,14 @@
     [:div
      (dropdown "presets" available-profiles on-select-callback
                :default-value-fn #(-> @core/state :profile :name name))
-     [:quote
+     [:span {:class "quote"}
       (if (string? description)
         (format "\"%s\"" description)
         description)]]))
 
-(rum/defc csv-body
+(rum/defc csv-body < {:key-fn get-an-id!}
   [row-list field-list]
-  [:tbody {}
+  [:tbody {:key (get-an-id!)}
    (mapv #(csv-row % field-list) row-list)])
 
 (rum/defc root-component < rum/reactive
