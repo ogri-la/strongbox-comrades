@@ -56,13 +56,13 @@
                              :retail "yes" :classic "yes"}}
    
    :mac {:description "good choices for mac users"
-         :field-order [:project :ui :retail :classic :ads :eula]
+         :field-order [:project :ui :retail :classic :f-oss :source-available :ads :eula :language]
          :selected-fields {:maintained "yes"
                            :mac "yes*"
                            :retail "yes" :classic "yes"}}
 
    :windows {:description "good choices for windows users"
-             :field-order [:project :ui :retail :classic :ads :eula]
+             :field-order [:project :ui :retail :classic :f-oss :source-available :ads :eula :language]
              :selected-fields {:maintained "yes"
                                :windows "yes"
                                :retail "yes" :classic "yes"}}
