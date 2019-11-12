@@ -11,7 +11,9 @@
 (def comrades (macro/compile-time-comrades-csv)) ;; compile-time data
 
 ;; order the fields are read in
-(def -field-order [:name :url :maintained :linux :mac :windows :ui :retail :classic :f-oss :source-available :ads :eula :language])
+(def -field-order [:name :url :maintained :linux :mac :windows :ui :retail :classic :f-oss :source-available :ads :eula :language
+                   :feature-search-catalog
+                   :feature-curseforge :feature-wowinterface :feature-tukui :feature-install-from-vcs :feature-wowace])
 
 (def -state-template
   {;; fields are displayed in the order they are read in by default
