@@ -41,13 +41,26 @@
        [:option {:key (get-an-id!)}
         option])]))
 
+(defn html-quoted-label
+  ;; "feature" => "feature"
+  ;; "feature "foo bar baz"" => [:span "feature" [:span "foo bar "baz"]]
+  [label]
+  (let [fancy-left-quote "“"
+        quote-pos (clojure.string/index-of label fancy-left-quote)]
+    (if quote-pos
+      [:span
+       (subs label 0 quote-pos)
+       [:span {:class "no-break"}
+        (subs label quote-pos)]]
+      label)))
+
 (rum/defc csv-header < {:key-fn get-an-id!}
   [csv-header field-list]
   [:thead
    [:tr {:key (get-an-id!)}
     (for [field field-list
           :let [val (field csv-header)
-                label (or (:label val) val)]]
+                label (html-quoted-label (or (:label val) val ""))]]
       [:th {:key (get-an-id!)}
        label
        (when-not (empty? (:option-list val))

@@ -12,8 +12,8 @@
 
 ;; order the fields are read in
 (def -field-order [:name :url :maintained :linux :mac :windows :ui :retail :classic :f-oss :source-available :ads :eula :language
-                   :feature-search-catalog
-                   :feature-curseforge :feature-wowinterface :feature-tukui :feature-install-from-vcs :feature-wowace])
+                   :feature-curseforge :feature-wowinterface :feature-tukui :feature-install-from-vcs :feature-wowace
+                   :feature-catalog-search])
 
 (def -state-template
   {;; fields are displayed in the order they are read in by default
@@ -21,7 +21,9 @@
    :field-order -field-order
 
    ;; fields that can be selected
-   :selectable-fields [:maintained :linux :mac :windows :ui :retail :classic :f-oss :source-available :ads :eula :language]
+   :selectable-fields [:maintained :linux :mac :windows :ui :retail :classic :f-oss :source-available :ads :eula :language
+                       :feature-curseforge :feature-wowinterface :feature-tukui :feature-install-from-vcs :feature-wowace
+                       :feature-catalog-search]
 
    ;; map of :name and :description for selected preset
    :profile nil
@@ -35,22 +37,26 @@
 
 (def profiles
   {:default {:description "some basic filtering, good for everybody"
+             :field-order (into [:project] (remove #{:ads :eula :source-available :f-oss :language :feature-wowace} -field-order))
              :selected-fields {:maintained "yes" :classic "yes"}}
    
    :unfiltered {:description "no filtering, ordered by 'maintained' and then by 'name'"
                 :selected-fields (zipmap (:selectable-fields -state-template) (repeat unselected))}
 
-   :snarky {:description [:a {:href "https://store.steampowered.com/hwsurvey/Steam-Hardware-Software-Survey-Welcome-to-Steam?platform=combined"
-                              :target "_blank"}
-                          "\"statistically, this is probably for you\""]
-            :field-order [:project :windows :retail :classic]
-            :selected-fields {:maintained "yes"
-                              :windows "yes"
-                              :retail "yes" :classic "yes"
-                              :ui "GUI"}}
+   ;;:snarky {:description [:a {:href "https://store.steampowered.com/hwsurvey/Steam-Hardware-Software-Survey-Welcome-to-Steam?platform=combined"
+   ;;                           :target "_blank"}
+   ;;                       "\"statistically, this is probably for you\""]
+   ;;         :field-order [:project :windows :retail :classic]
+   ;;         :selected-fields {:maintained "yes"
+   ;;                           :windows "yes"
+   ;;                           :retail "yes" :classic "yes"
+   ;;                           :ui "GUI"}}
 
    :linux {:description "good choices for Linux users"
-           :field-order [:project :retail :classic :ui :f-oss :source-available :ads :eula :language]
+           :field-order [:project :retail :classic :ui :f-oss :source-available :ads :eula
+                         :language
+                         :feature-curseforge :feature-wowinterface :feature-tukui
+                         :feature-catalog-search]
            :selected-fields {:maintained "yes"
                              :linux "yes*"
                              :source-available "yes"
@@ -58,13 +64,17 @@
                              :retail "yes" :classic "yes"}}
    
    :mac {:description "good choices for mac users"
-         :field-order [:project :retail :classic :ui :ads :eula]
+         :field-order [:project :retail :classic :ui
+                       :feature-curseforge :feature-wowinterface :feature-tukui
+                       :feature-catalog-search]
          :selected-fields {:maintained "yes"
                            :mac "yes*"
                            :retail "yes" :classic "yes"}}
 
    :windows {:description "good choices for windows users"
-             :field-order [:project :retail :classic :ui :ads :eula]
+             :field-order [:project :retail :classic :ui
+                           :feature-curseforge :feature-wowinterface :feature-tukui
+                           :feature-catalog-search]
              :selected-fields {:maintained "yes"
                                :windows "yes"
                                :retail "yes" :classic "yes"}}
@@ -74,7 +84,10 @@
                                :windows "yes" :mac "yes" :linux "yes"
                                :ui "GUI"
                                :retail "yes" :classic "yes"
-                               :ads "no" :eula "no" :f-oss "yes"}}
+                               :ads "no" :eula "no" :f-oss "yes"
+                               :feature-curseforge "yes"
+                               :feature-wowinterface "yes"
+                               :feature-catalog-search "yes"}}
    })
 
 ;;
