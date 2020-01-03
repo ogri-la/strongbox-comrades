@@ -19,7 +19,6 @@
     - alternate row colours
     - done
 
-## todo
 * add some kind of process for updating comrades.csv
     - manage in this repository
     - on merge to master
@@ -30,6 +29,10 @@
             - create a branch on wowman
             - update README
             - open a PR
+    - done
+
+## todo
+
 * add link *back* to wowman 'other addon managers'
 * add description, declare bias
 * add link for submitting an update
