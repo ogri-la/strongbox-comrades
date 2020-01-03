@@ -6,26 +6,42 @@
 
   :min-lein-version "2.9.1"
 
-  :dependencies [[org.clojure/clojure "1.10.0"]
+  :dependencies [;; clj
+                 [org.clojure/clojure "1.10.0"]
+                 [clj-http "3.10.0"]
+                 [org.clojure/data.csv "0.1.4"]
+                 [org.clojure/tools.namespace "0.2.11"] ;; reload code
+                 [clj-commons/fs "1.5.0"]
+                 [org.clojure/data.json "0.2.7"]
+                 [hiccup "1.0.5"]
+
+                 ;; cljs
                  [org.clojure/clojurescript "1.10.520"]
                  [org.clojure/core.async  "0.4.500"]
                  [testdouble/clojurescript.csv "0.4.3"]
                  [rum "0.11.3"]
+                 [cljs-http "0.1.46"]
+                 [funcool/cuerdas "2.2.0"]
 
                  ;; remember to update the LICENCE.txt
                  ;; remember to update pom file (`lein pom`)
 
-                 [cljs-http "0.1.46"]
-                 [funcool/cuerdas "2.2.0"]
                  ]
 
   :plugins [[lein-figwheel "0.5.19"]
-            [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]]
+            [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]
+                                                 [clj-http]
+                                                 [org.clojure/data.csv]
+                                                 [org.clojure/tools.namespace]
+                                                 [clj-commons/fs]
+                                                 [org.clojure/data]
+                                                 [hiccup]]
+             ]]
 
-  ;; not possible apparently: https://github.com/bhauman/lein-figwheel/issues/614
-  ;;:main wowman-comrades.core
+  ;; not possible for figwheel: https://github.com/bhauman/lein-figwheel/issues/614
+  :main wowman-comrades.update
 
-  :source-paths ["src"]
+  :source-paths ["src" "clj-src"]
 
   :cljsbuild {:builds
               [{:id "dev"

@@ -671,3 +671,11 @@ If you modify this Program, or any covered work, by linking or combining it with
 * org.clojure/core.async
 * testdouble/clojurescript.csv
 * tonsky/rum
+* clj-http
+* cljs-http
+* functool/cuerdas
+* org.clojure/data.csv
+* org.clojure/tools.namespace
+* clj-commons/fs
+* org.clojure/data.json
+* hiccup
