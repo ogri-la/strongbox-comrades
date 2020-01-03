@@ -42,5 +42,5 @@ Tukui Client,https://www.tukui.org/download.php?client=win,yes,no,no,yes,GUI,yes
 Twitch App,https://www.twitch.tv/downloads,yes,no,yes,yes,GUI,yes,yes,no,no,yes,yes,?,yes,no,no,no,no,yes
 woblight/GitAddonsManager,https://gitlab.com/woblight/GitAddonsManager,yes,yes*,no,yes*,GUI,yes,no,yes,yes,no,no,C++,no,no,no,yes,no,no
 WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,yes,yes*,yes*,yes,GUI,yes,no,yes,yes,no,no,JavaScript,yes,yes,no,no,no,no
-wowclassicui/desktop,https://github.com/wowclassicui/desktop,yes,yes*,no,yes,GUI,yes,yes,no,yes,no,no,Vue,no,no,no,no,no,yes
+wowclassicui/desktop,https://github.com/wowclassicui/desktop,yes,yes*,no,yes,GUI,no,yes,no,yes,no,no,Vue,no,no,no,no,no,yes
 wowmatrix,https://www.wowmatrix.com/,yes,yes,yes,yes,GUI,yes,no,no,no,yes,yes,?,no,no,no,no,no,yes
