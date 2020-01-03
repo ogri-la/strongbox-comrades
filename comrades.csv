@@ -4,14 +4,14 @@ DayBr3ak/wow-better-cli,https://github.com/DayBr3ak/wow-better-cli,no,yes*,yes*,
 JonasKnarbakk/GWAM,https://github.com/JonasKnarbakk/GWAM,no,yes*,yes*,yes*,GUI,yes,no,yes,yes,no,no,C++,yes,no,no,no,no,yes
 kemayo/waup,https://github.com/kemayo/waup,no,yes*,no,no,CLI,yes,no,yes,yes,no,no,Python,no,no,no,no,yes,no
 Kev/macaceupdater,https://github.com/Kev/macaceupdater,no,no,yes*,no,GUI,yes,no,yes,yes,no,no,Objective-C,no,no,no,no,yes,no
-kuhnertdm/wow-addon-updater,https://github.com/kuhnertdm/wow-addon-updater,no!,yes*,yes*,yes*,CLI,yes,no,yes,yes,no,no,Python,yes,yes,yes,no,no,no
+kuhnertdm/wow-addon-updater,https://github.com/kuhnertdm/wow-addon-updater,no,yes*,yes*,yes*,CLI,yes,no,yes,yes,no,no,Python,yes,yes,yes,no,no,no
 Morganstern/AddonManager,https://github.com/Morganstern/AddonManager,no,no,no,yes*,GUI,yes,no,yes,yes,no,no,C#,yes,no,yes,no,no,no
 padakuro/wowaceapt,https://github.com/padakuro/wowaceapt,no,no,no,yes*,UI,yes,no,no,yes,no,no,C#,no,no,no,no,yes,yes
 Roemer/Waddu,https://github.com/Roemer/Waddu,no,no,no,yes,GUI,yes,no,no,yes,no,no,C#,yes,yes,no,no,yes,no
 Saionaro/wow-addons-updater,https://github.com/Saionaro/wow-addons-updater,no,yes*,yes*,yes*,GUI,yes,no,yes,yes,no,no,Javascript,yes,no,no,no,no,yes
 SeriousBug/WoWutils,https://github.com/SeriousBug/WoWutils,no,yes*,no,no,CLI,yes,no,yes,yes,no,no,Bash,yes,no,no,no,no,no
-Sumolari/WAM,https://github.com/Sumolari/WAM,no!,no,yes*,no,CLI,yes,no,yes,yes,no,no,Coffeescript,yes,no,no,no,no,no
-sysworx/wowam,https://github.com/sysworx/wowam,no!,no,yes,yes,GUI,yes,no,no,yes,no,yes*,XOJO,yes,no,no,no,no,no
+Sumolari/WAM,https://github.com/Sumolari/WAM,no,no,yes*,no,CLI,yes,no,yes,yes,no,no,Coffeescript,yes,no,no,no,no,no
+sysworx/wowam,https://github.com/sysworx/wowam,no,no,yes,yes,GUI,yes,no,no,yes,no,yes*,XOJO,yes,no,no,no,no,no
 Tharre/pywamgr,https://github.com/Tharre/pywamgr,no,yes*,yes*,yes*,CLI,yes,no,yes,yes,no,no,Python,yes,no,no,no,no,no
 vargen2/addonmanager,https://github.com/vargen2/addonmanager,no,no,no,yes*,GUI,yes,no,yes,yes,no,no,Java,yes,no,no,no,no,yes
 WoWAceUpdater,https://sourceforge.net/projects/wowaceupdater/,no,no,no,yes,GUI,yes,no,yes,yes,?,?,?,no,no,no,no,yes,yes
