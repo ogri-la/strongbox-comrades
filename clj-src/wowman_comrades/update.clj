@@ -254,7 +254,7 @@
 (defn -main
   "entrypoint when `lein run` is executed from the command line"
   [& args]
-  (let [rows (read-csv! "comrades.raw")
+  (let [rows (read-csv! "comrades.raw.csv")
         ordering (first rows) ;; header
         final-rows (-> rows
                        to-maps
