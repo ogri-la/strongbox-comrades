@@ -24,15 +24,16 @@
      (csv/read-csv reader))))
 
 (defn to-sorted-vecs
-  "given a list of maps, returns a list of those map's values with the given header as the first item"
+  "turn list of maps (rows) into a list of values ordered by given header"
   [rows header]
-  (let [;; turn list of unordered maps into a list of values ordered by given header
+  (let [
         sort-vals (fn [row]
                     (let [cmp (comp #(.indexOf header %) first)]
                       (->> row seq (sort-by cmp) (map second))))]
     (into [header] (mapv sort-vals rows))))
 
 (defn to-maps
+  "converts list of values into a list of maps (rows)"
   [csv-data]
   (map zipmap
        (->> (first csv-data) ;; First row is the header
@@ -55,7 +56,6 @@
   "given a URL, does a HTTP GET when result of previous fetch does not exist.
   stores result in a temporary file on the filesystem"
   [url]
-  ;;(prn "fetching" url)
   (let [key (fs-cache-key url)
         key-path (fs-join cache-dir key)]
     (fs/mkdirs cache-dir)
@@ -63,7 +63,8 @@
     (if (fs/exists? key-path)
       (slurp key-path)
       
-      (let [result (:body (http/get url))]
+      (let [_ (prn "fetching" url)
+            result (:body (http/get url))]
         (spit key-path result)
         result))))
 
@@ -77,6 +78,7 @@
   (string/ends-with? (str x) "!"))
 
 (defn strip-explicit-mark
+  "removes trailing exclamation mark from an explicitly 'set' value"
   [x]
   (apply str (drop-last x)))
 
@@ -140,9 +142,7 @@
   "if given row is a project hosted on github, fetch it's data and return it"
   [row]
   (when (github-hosted? row)
-    (let [;;        https://api.github.com/repos/vargen2/addon-manager
-          url (str "https://api.github.com/repos/" (github-repo-name row))
-          ]
+    (let [url (str "https://api.github.com/repos/" (github-repo-name row))]
       (-> url http-get json/read-str))))
 
 ;; exceptions:
@@ -165,26 +165,23 @@
 ;; exceptions:
 ;; wow-better-cli, github isn't detecting the licence correctly (it's mit reporting as 'other')
 ;; waup, doesn't have a LICENCE file but it's source says BSD
-(def f-oss-licence-keys #{"mit"
-                          "bsd-3-clause" "bsd-2-clause" "isc"
-                          "apache-2.0"
-                          "gpl-2.0" "gpl-3.0" "agpl-3.0"})
-
-
 (defn f-oss?
   [row]
   (when-let [data (github-data row)]
-    (let [licence (get-in data ["license" "key"])]
+    (let [f-oss-licence-keys #{"mit"
+                               "bsd-3-clause" "bsd-2-clause" "isc"
+                               "apache-2.0"
+                               "gpl-2.0" "gpl-3.0" "agpl-3.0"}
+          licence (get-in data ["license" "key"])]
       (y-n-m (and licence
                   (contains? f-oss-licence-keys licence))))))
-
-(def source-hosts #{"github.com" "gitlab.com" "bitbucket.com" "sourceforge.net"})
 
 ;; exceptions:
 ;; braier/wow-addon-updater, makes source available as download
 (defn source-available?
   [row]
-  (let [hostname (-> row (get "URL") java.net.URL. .getHost)]
+  (let [source-hosts #{"github.com" "gitlab.com" "bitbucket.com" "sourceforge.net"}
+        hostname (-> row (get "URL") java.net.URL. .getHost)]
     (y-n-m (contains? source-hosts hostname))))
 
 (defn language
@@ -255,7 +252,8 @@
 ;;
 
 (defn -main
-  []
+  "entrypoint when `lein run` is executed from the command line"
+  [& args]
   (let [rows (read-csv! "comrades.raw")
         ordering (first rows) ;; header
         final-rows (-> rows
@@ -263,5 +261,8 @@
                        update-data
                        (to-sorted-vecs ordering))]
     (update-html! final-rows "resources/public/index.html")
-    (write-csv! final-rows "comrades.csv"))
+    (prn "wrote resources/public/index.html")
+    
+    (write-csv! final-rows "comrades.csv")
+    (prn "wrote comrades.csv"))
   nil)
