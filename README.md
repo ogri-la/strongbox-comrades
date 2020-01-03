@@ -3,7 +3,7 @@
 A [website](https://ogri-la.github.io/wow-addon-managers/) for wowman's 
 [comrades.csv](https://github.com/ogri-la/wowman/blob/develop/comrades.csv) file.
 
-[![wowman-comrades](./screenshots/0.1.0.png)](./screenshots/0.1.0.png?raw=true) 
+[![wowman-comrades](./screenshots/0.2.1.png)](./screenshots/0.2.1.png?raw=true) 
 
 ## Local development
 
