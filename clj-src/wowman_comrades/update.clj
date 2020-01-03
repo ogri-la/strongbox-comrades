@@ -82,7 +82,7 @@
     (explicitly-set? x) (strip-explicit-mark x)
     
     (true? x) "yes"
-    (false? x) "no"
+    (or (false? x) (nil? x)) "no"
 
     ;; 'yes, with caveats' is the same as 'maybe' is the same as 'no, with caveats'
     :else "yes*"))
@@ -139,11 +139,12 @@
           ]
       (-> url http-get json/read-str))))
 
+;; exceptions:
+;; sysworx/wowam, I can't find the very recent commit it's talking about.
 (defn maintained?
   "a repository is 'maintained' if it isn't archived and has seen a commit in the last 12 months.
   if the addon manager is hosted on github we can use the 'pushed_at' and 'archived' values to determine this.
-  the 'pushed_at' value is for the last commit on *any* branch, including stagnant pull requests.
-  in the case of `sysworx/wowam` I can't find the very recent commit it's talking about."
+  the 'pushed_at' value is for the last commit on *any* branch, including stagnant pull requests."
   [row]
   (when-let [data (github-data row)]
     (let [archived? (get data "archived")
@@ -154,6 +155,36 @@
 
       (y-n-m (and (not archived?)
                   has-recent-commit)))))
+
+;; exceptions:
+;; wow-better-cli, github isn't detecting the licence correctly (it's mit reporting as 'other')
+;; waup, doesn't have a LICENCE file but it's source says BSD
+(def f-oss-licence-keys #{"mit"
+                          "bsd-3-clause" "bsd-2-clause" "isc"
+                          "apache-2.0"
+                          "gpl-2.0" "gpl-3.0" "agpl-3.0"})
+
+
+(defn f-oss?
+  [row]
+  (when-let [data (github-data row)]
+    (let [licence (get-in data ["license" "key"])
+          _ (prn "licence" licence)
+          ]
+      (y-n-m (and licence
+                  (contains? f-oss-licence-keys licence))))))
+
+(def source-hosts #{"github.com" "gitlab.com" "bitbucket.com" "sourceforge.net"})
+
+;; exceptions:
+;; braier/wow-addon-updater, makes source available as download
+(defn source-available?
+  [row]
+  (let [hostname (-> row (get "URL") java.net.URL. .getHost)]
+    (y-n-m (contains? source-hosts hostname))))
+      
+
+;;
 
 (defn update-row
   "wrapper around some boilerplate updating individual values in the row map"
@@ -173,7 +204,9 @@
   (let [update (fn [row]
                  (-> row
                      (update-row "Maintained" maintained?)
-                     ;;(update-row ...)
+                     (update-row "F/OSS" f-oss?)
+                     (update-row "Source Available" source-available?)
+
                      ))]
     (map update map-list)))
 
@@ -181,11 +214,11 @@
 
 (defn -main
   []
-  (let [rows (read-csv! "comrades.csv")
+  (let [rows (read-csv! "comrades.raw")
         header (first rows) ;; preferred ordering
         ]
     (-> rows
         to-maps
         update-data
         (to-sorted-vecs header)
-        (write-csv! "comrades2.csv"))))
+        (write-csv! "comrades.csv"))))
