@@ -53,7 +53,7 @@
   "given a URL, does a HTTP GET when result of previous fetch does not exist.
   stores result in a temporary file on the filesystem"
   [url]
-  (prn "fetching" url)
+  ;;(prn "fetching" url)
   (let [key (fs-cache-key url)
         key-path (fs-join cache-dir key)]
     (fs/mkdirs cache-dir)
@@ -168,9 +168,7 @@
 (defn f-oss?
   [row]
   (when-let [data (github-data row)]
-    (let [licence (get-in data ["license" "key"])
-          _ (prn "licence" licence)
-          ]
+    (let [licence (get-in data ["license" "key"])]
       (y-n-m (and licence
                   (contains? f-oss-licence-keys licence))))))
 
@@ -210,9 +208,7 @@
                      (update-row "Maintained" maintained?)
                      (update-row "F/OSS" f-oss?)
                      (update-row "Source Available" source-available?)
-                     (update-row "Language" language)
-
-                     ))]
+                     (update-row "Language" language)))]
     (map update map-list)))
 
 ;;
@@ -220,10 +216,10 @@
 (defn -main
   []
   (let [rows (read-csv! "comrades.raw")
-        header (first rows) ;; preferred ordering
+        ordering (first rows) ;; header
         ]
     (-> rows
         to-maps
         update-data
-        (to-sorted-vecs header)
+        (to-sorted-vecs ordering)
         (write-csv! "comrades.csv"))))
