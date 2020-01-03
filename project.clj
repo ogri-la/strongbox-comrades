@@ -13,6 +13,7 @@
                  [org.clojure/tools.namespace "0.2.11"] ;; reload code
                  [clj-commons/fs "1.5.0"]
                  [org.clojure/data.json "0.2.7"]
+                 [hiccup "1.0.5"]
 
                  ;; cljs
                  [org.clojure/clojurescript "1.10.520"]
@@ -33,7 +34,8 @@
                                                  [org.clojure/data.csv]
                                                  [org.clojure/tools.namespace]
                                                  [clj-commons/fs]
-                                                 [org.clojure/data]]
+                                                 [org.clojure/data]
+                                                 [hiccup]]
              ]]
 
   ;; not possible for figwheel: https://github.com/bhauman/lein-figwheel/issues/614

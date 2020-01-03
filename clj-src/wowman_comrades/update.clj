@@ -1,11 +1,13 @@
 (ns wowman-comrades.update
   (:require
+   [clojure.string :as string]
    [clojure.tools.namespace.repl :refer [refresh]]
    [clojure.data.csv :as csv]
    [clojure.java.io :as io]
    [clj-http.client :as http]
    [me.raynes.fs :as fs]
    [clojure.data.json :as json]
+   [hiccup.core :as hiccup :refer [html]]
    ))
 
 (def cache-dir "/tmp/wowman-comrades/cache")
@@ -68,7 +70,7 @@
 (defn explicitly-set?
   "a value is 'explicitly set' when it's suffixed with an exclamation mark."
   [x]
-  (clojure.string/ends-with? (str x) "!"))
+  (string/ends-with? (str x) "!"))
 
 (defn strip-explicit-mark
   [x]
@@ -213,13 +215,46 @@
 
 ;;
 
+(defn update-html!
+  "converts rows to a simple html table and replaces content between the `noscript` tags in given html file "
+  [rows html-file]
+  (let [raw-html (slurp html-file)
+
+        mk-header (fn [head-row]
+                     [:tr
+                      (for [head-val head-row]
+                        [:th head-val])])
+
+        mk-row (fn [row]
+                 [:tr
+                  (for [val row]
+                    [:td val])])
+
+        html-data [:table
+                   [:thead
+                    (mk-header (first rows)]
+                   [:tbody
+                    (map mk-row (rest rows)]]
+
+        replacement-html (as-> html-data x
+                           (html x)
+                           (format "<noscript>\n%s\n</noscript>" x)
+                           ;; "(?s)" is the 'dotall' flag, which matches across multiple lines
+                           ;; this makes the replacement idempotent
+                           (string/replace raw-html #"(?s)<noscript>.*</noscript>" x)
+                           (string/replace x #"<tr>" "\n<tr>"))]
+    (spit html-file replacement-html)))
+
+;;
+
 (defn -main
   []
   (let [rows (read-csv! "comrades.raw")
         ordering (first rows) ;; header
-        ]
-    (-> rows
-        to-maps
-        update-data
-        (to-sorted-vecs ordering)
-        (write-csv! "comrades.csv"))))
+        final-rows (-> rows
+                       to-maps
+                       update-data
+                       (to-sorted-vecs ordering))]
+    (update-html! final-rows "resources/public/index.html")
+    (write-csv! final-rows "comrades.csv"))
+  nil)
