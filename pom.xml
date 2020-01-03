@@ -17,7 +17,7 @@
     <url>https://github.com/ogri-la/wowman-comrades</url>
     <connection>scm:git:git://github.com/ogri-la/wowman-comrades.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/ogri-la/wowman-comrades.git</developerConnection>
-    <tag>be66a976759dd4c76fea900bc6e90857bffe3737</tag>
+    <tag>f1baf678ca7ce33deb8758e40113cbc9b0126803</tag>
   </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -111,6 +111,11 @@
       <groupId>org.clojure</groupId>
       <artifactId>data.json</artifactId>
       <version>0.2.7</version>
+    </dependency>
+    <dependency>
+      <groupId>hiccup</groupId>
+      <artifactId>hiccup</artifactId>
+      <version>1.0.5</version>
     </dependency>
     <dependency>
       <groupId>org.clojure</groupId>
