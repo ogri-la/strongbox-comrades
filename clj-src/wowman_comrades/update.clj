@@ -67,6 +67,10 @@
         (spit key-path result)
         result))))
 
+(defn link?
+  [x]
+  (-> x str (string/starts-with? "https")))
+
 (defn explicitly-set?
   "a value is 'explicitly set' when it's suffixed with an exclamation mark."
   [x]
@@ -228,13 +232,16 @@
         mk-row (fn [row]
                  [:tr
                   (for [val row]
-                    [:td val])])
+                    [:td
+                     (if (link? val)
+                       [:a {:href val} val]
+                       val)])])
 
         html-data [:table
                    [:thead
-                    (mk-header (first rows)]
+                    (mk-header (first rows))]
                    [:tbody
-                    (map mk-row (rest rows)]]
+                    (map mk-row (rest rows))]]
 
         replacement-html (as-> html-data x
                            (html x)
