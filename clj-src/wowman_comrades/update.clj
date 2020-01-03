@@ -182,7 +182,11 @@
   [row]
   (let [hostname (-> row (get "URL") java.net.URL. .getHost)]
     (y-n-m (contains? source-hosts hostname))))
-      
+
+(defn language
+  [row]
+  (when-let [data (github-data row)]
+    (get data "language")))
 
 ;;
 
@@ -206,6 +210,7 @@
                      (update-row "Maintained" maintained?)
                      (update-row "F/OSS" f-oss?)
                      (update-row "Source Available" source-available?)
+                     (update-row "Language" language)
 
                      ))]
     (map update map-list)))
