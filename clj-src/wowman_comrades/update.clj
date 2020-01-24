@@ -134,15 +134,21 @@
   if separator not found in addon name, it's assumed to be the owner's name and the repository name is identical"
   [row]
   (let [name (get row "Name")]
-    (if (> (.indexOf name "/") -1)
-      name
-      (format "%s/%s" name name))))
+    (if (empty? name)
+      (-> row (get "URL") java.net.URL. .getPath (subs 1))
+      name)))
+
+(defn repo-name-doubler
+  [name]
+  (if (> (.indexOf name "/") -1)
+    name
+    (format "%s/%s" name name)))
 
 (defn github-data
   "if given row is a project hosted on github, fetch it's data and return it"
   [row]
   (when (github-hosted? row)
-    (let [url (str "https://api.github.com/repos/" (github-repo-name row))]
+    (let [url (str "https://api.github.com/repos/" (repo-name-doubler (github-repo-name row)))]
       (-> url http-get json/read-str))))
 
 ;; exceptions:
@@ -171,7 +177,7 @@
     (let [f-oss-licence-keys #{"mit"
                                "bsd-3-clause" "bsd-2-clause" "isc"
                                "apache-2.0"
-                               "gpl-2.0" "gpl-3.0" "agpl-3.0"}
+                               "gpl-2.0" "gpl-3.0" "agpl-3.0" "zlib"}
           licence (get-in data ["license" "key"])]
       (y-n-m (and licence
                   (contains? f-oss-licence-keys licence))))))
@@ -208,6 +214,7 @@
   [map-list]
   (let [update (fn [row]
                  (-> row
+                     (update-row "Name" github-repo-name)
                      (update-row "Maintained" maintained?)
                      (update-row "F/OSS" f-oss?)
                      (update-row "Source Available" source-available?)
