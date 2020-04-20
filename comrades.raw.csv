@@ -37,7 +37,7 @@ Gonzih/wow-addon-manager,https://github.com/Gonzih/wow-addon-manager,yes,yes*,ye
 grrttedwards/wow-addon-updater,https://github.com/grrttedwards/wow-addon-updater,yes,yes*,yes*,yes*,CLI,yes,yes,yes,yes,no,no,Python,yes,yes,yes,yes,yes,no
 Jerry-Ma/wowplug,https://github.com/Jerry-Ma/wowplug,yes,yes*,yes*,yes*,CLI,yes,no,yes,yes,no,no,Python,yes,no,no,yes,no,yes
 karolswdev/wow,https://github.com/karolswdev/wow,yes,no,no,yes*,CLI,no,yes,no,yes,no,no,C#,no,no,no,no,no,yes
-layday/instawow,https://github.com/layday/instawow,yes,yes*,yes*,yes*,CLI,yes,yes,yes,yes,no,no,Python,yes,yes,yes,no,no,yes
+layday/instawow,https://github.com/layday/instawow,yes,yes,yes,yes*,CLI,yes,yes,yes,yes,no,no,Python,yes,yes,yes,no,no,yes
 Lund259/WoW-Addon-Manager,https://github.com/Lund259/WoW-Addon-Manager,yes,no,no,yes,GUI,yes,no,yes,yes,no,no,C#,no,no,no,no,no,no
 Mangmasta/MangManager,https://github.com/Mangmasta/MangManager,yes,yes*,yes*,yes*,CLI,yes,yes,no,yes,no,no,C++,yes,no,no,no,no,no
 MBODM/WADM,https://github.com/MBODM/WADM,yes,no,no,yes,GUI,yes,no,yes,yes,no,no,C#,yes,no,no,no,no,no
