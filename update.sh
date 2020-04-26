@@ -8,7 +8,7 @@ echo "compiling to javascript"
 lein do clean, cljsbuild once min
 
 echo "review changes"
-firefox resources/public/index.html
+vivaldi-stable resources/public/index.html
 
 echo "syncing changes to website"
 rsync -av resources/public/ ../wow-addon-managers.github.io/
