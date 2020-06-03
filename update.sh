@@ -2,7 +2,7 @@
 set -e
 
 echo "generating 'comrades.csv' from 'comrades.raw'"
-lein run
+#lein run
 
 echo "compiling to javascript"
 lein do clean, cljsbuild once min
