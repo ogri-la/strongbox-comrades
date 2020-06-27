@@ -26,7 +26,7 @@ sysworx/wowam,https://github.com/sysworx/wowam,no!,no,yes,yes,GUI,yes,no,no,yes,
 vargen2/Addon,https://github.com/vargen2/Addon,no!,no,no,yes*,GUI,yes,yes,yes,yes,no,no,C#,yes,no,yes,no,no,no
 AcidWeb/CurseBreaker,https://github.com/AcidWeb/CurseBreaker,yes,yes,yes,yes,TUI,yes,yes,yes,yes,no,no,Python,yes,yes,yes,no,no,yes
 antiwinter/wowa,https://github.com/antiwinter/wowa,yes,yes*,yes*,yes*,CLI,yes,yes,yes,yes,no,no,JavaScript,yes,yes,yes,yes,no,yes
-Auo/lazy-turnip,https://github.com/Auo/lazy-turnip,yes,no,yes*,yes,GUI,yes,yes,no,yes,no,no,JavaScript,yes,yes,no,no,no,yes
+Auo/lazy-turnip,https://github.com/Auo/lazy-turnip,no!,no,yes*,yes,GUI,yes,yes,no,yes,no,no,JavaScript,yes,yes,no,no,no,yes
 braier/wow-addon-updater,https://www.braier.net/wow-addon-updater/index.html,yes,yes,yes,yes,GUI,yes,no,yes,yes!,no,no,Pascal,yes,yes,yes,no,no,no
 camas/grunt,https://github.com/camas/grunt,yes,yes*,no,yes*,CLI,yes,yes,yes,yes,no,no,Rust,yes,no,no,no,no,no
 ColbyWanShinobi/cullingOfStratholme,https://github.com/ColbyWanShinobi/cullingOfStratholme,yes,yes,no,no,CLI,yes,yes,yes,yes,no,no,Shell,yes,yes,no,yes,no,no

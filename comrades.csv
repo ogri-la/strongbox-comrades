@@ -26,7 +26,7 @@ sysworx/wowam,https://github.com/sysworx/wowam,no,no,yes,yes,GUI,yes,no,no,yes,n
 vargen2/Addon,https://github.com/vargen2/Addon,no,no,no,yes*,GUI,yes,yes,yes,yes,no,no,C#,yes,no,yes,no,no,no
 AcidWeb/CurseBreaker,https://github.com/AcidWeb/CurseBreaker,yes,yes,yes,yes,TUI,yes,yes,yes,yes,no,no,Python,yes,yes,yes,no,no,yes
 antiwinter/wowa,https://github.com/antiwinter/wowa,yes,yes*,yes*,yes*,CLI,yes,yes,yes,yes,no,no,JavaScript,yes,yes,yes,yes,no,yes
-Auo/lazy-turnip,https://github.com/Auo/lazy-turnip,yes,no,yes*,yes,GUI,yes,yes,no,yes,no,no,JavaScript,yes,yes,no,no,no,yes
+Auo/lazy-turnip,https://github.com/Auo/lazy-turnip,no,no,yes*,yes,GUI,yes,yes,no,yes,no,no,JavaScript,yes,yes,no,no,no,yes
 braier/wow-addon-updater,https://www.braier.net/wow-addon-updater/index.html,yes,yes,yes,yes,GUI,yes,no,yes,yes,no,no,Pascal,yes,yes,yes,no,no,no
 camas/grunt,https://github.com/camas/grunt,yes,yes*,no,yes*,CLI,yes,yes,yes,yes,no,no,Rust,yes,no,no,no,no,no
 ColbyWanShinobi/cullingOfStratholme,https://github.com/ColbyWanShinobi/cullingOfStratholme,yes,yes,no,no,CLI,yes,yes,yes,yes,no,no,Shell,yes,yes,no,yes,no,no
@@ -40,7 +40,7 @@ Gonzih/wow-addon-manager,https://github.com/Gonzih/wow-addon-manager,yes,yes*,ye
 grrttedwards/wow-addon-updater,https://github.com/grrttedwards/wow-addon-updater,yes,yes*,yes*,yes*,CLI,yes,yes,yes,yes,no,no,Python,yes,yes,yes,yes,yes,no
 Jerry-Ma/wowplug,https://github.com/Jerry-Ma/wowplug,yes,yes*,yes*,yes*,CLI,yes,no,yes,yes,no,no,Python,yes,no,no,yes,no,yes
 karolswdev/wow,https://github.com/karolswdev/wow,yes,no,yes*,yes*,CLI,no,yes,no,yes,no,no,C#,no,no,no,no,no,yes
-layday/instawow,https://github.com/layday/instawow,yes,yes,yes,yes*,CLI,yes,yes,yes,yes,no,no,Python,yes,yes,yes,no,no,yes
+layday/instawow,https://github.com/layday/instawow,yes,yes,yes,yes,CLI,yes,yes,yes,yes,no,no,Python,yes,yes,yes,no,no,yes
 Lund259/WoW-Addon-Manager,https://github.com/Lund259/WoW-Addon-Manager,yes,no,no,yes,GUI,yes,no,yes,yes,no,no,C#,no,no,no,no,no,no
 Mangmasta/MangManager,https://github.com/Mangmasta/MangManager,yes,yes*,yes*,yes*,CLI,yes,yes,no,yes,no,no,C++,yes,no,no,no,no,no
 MBODM/WADM,https://github.com/MBODM/WADM,yes,no,no,yes,GUI,yes,no,yes,yes,no,no,C#,yes,no,no,no,no,no
