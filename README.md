@@ -1,7 +1,7 @@
 # wowman-comrades
 
 A [website](https://ogri-la.github.io/wow-addon-managers/) for wowman's 
-[comrades.csv](https://github.com/ogri-la/wowman/blob/develop/comrades.csv) file.
+[comrades.csv](./comrades.csv) file.
 
 [![wowman-comrades](./screenshots/0.2.1.png)](./screenshots/0.2.1.png?raw=true) 
 
