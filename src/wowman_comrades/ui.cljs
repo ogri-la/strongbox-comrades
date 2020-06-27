@@ -121,6 +121,16 @@
   [:tbody {:key (get-an-id!)}
    (mapv #(csv-row % field-list) row-list)])
 
+(defn footer
+  []
+  [:ul
+   [:li "'Maintained': an addon manager is maintained if it has seen an update in 12 months."]
+   [:li "OS asterisk '" [:strong [:code "*"]] "': when " [:em "separate installation"] " of other software like Python, Java, NPM or GTK/QT, etc is required, 
+or compilation or similar, then it gets the big fat caveat asterisk: " [:strong [:code "*"]]]
+   [:li "If a packaged version of the addon manager exists for " [:em "at least one"] " distribution of Linux, I drop the caveat asterisk.
+This may be an AUR, DEB, RPM/DNF, Snap, Flatpak, Zypper, AppImage, etc."]
+   [:li [:a {:href "https://github.com/ogri-la/wowman-comrades/issues" :target "_blank"} "report any issues here"]]])
+
 (rum/defc root-component < rum/reactive
   []
   (let [state (rum-deref core/state)
@@ -155,11 +165,12 @@
       (profile-selection)
       (permalink)]
 
-
      [:table {}
       [:caption "comrades.csv"]
       (csv-header header field-list)
-      (csv-body body field-list)]]))
+      (csv-body body field-list)]
+
+     [:footer (footer)]]))
 
 (defn start
   [dom-element]

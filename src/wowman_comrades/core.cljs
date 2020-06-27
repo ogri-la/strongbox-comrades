@@ -190,7 +190,6 @@
   [user-params]
   (let [user-params (parse-user-params)
         preset (->> user-params keys (some #{:preset/name}) (get user-params) keyword)]
-    
     (when (get profiles preset)
       (set-profile! preset))
     (update-selected-fields! user-params :deepmerge? true)))
