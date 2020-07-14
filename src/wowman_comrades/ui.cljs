@@ -124,11 +124,12 @@
 (defn footer
   []
   [:ul
-   [:li "'Maintained': an addon manager is maintained if it has seen an update in 12 months."]
-   [:li "OS asterisk '" [:strong [:code "*"]] "': when " [:em "separate installation"] " of other software like Python, Java, NPM or GTK/QT, etc is required, 
-or compilation or similar, then it gets the big fat caveat asterisk: " [:strong [:code "*"]]]
-   [:li "If a packaged version of the addon manager exists for " [:em "at least one"] " distribution of Linux, I drop the caveat asterisk.
+   [:li "Maintained: an addon manager is considered 'maintained' if it has seen an update in 12 months."]
+   [:li [:strong [:code "*"]] " OS caveat: when " [:em "separate installation"] " of other software like Python, Java, NPM or GTK/QT, etc is required, 
+or compilation or similar."]
+   [:li [:strong [:code "*"]] " Linux OS caveat: if a packaged version of the addon manager exists for " [:em "at least one"] " distribution of Linux, I drop the caveat asterisk.
 This may be an AUR, DEB, RPM/DNF, Snap, Flatpak, Zypper, AppImage, etc."]
+   [:li [:strong [:code "^"]] " VCS caveat: only supports VCS through services like Github/Bitbucket/Gitlab and not git/hg/svn etc directly."]
    [:li [:a {:href "https://github.com/ogri-la/wowman-comrades/issues" :target "_blank"} "report any issues here"]]])
 
 (rum/defc root-component < rum/reactive
@@ -144,7 +145,8 @@ This may be an AUR, DEB, RPM/DNF, Snap, Flatpak, Zypper, AppImage, etc."]
                  (let [row-value (column-name row)]
                    (cond
                      ;; 'yes*' also means 'yes'
-                     (= match-value "yes*") (utils/in? row-value [match-value "yes"])
+                     (or (= match-value "yes*")
+                         (= match-value "yes^")) (utils/in? row-value [match-value "yes"])
 
                      ;; empty string means "don't filter"
                      (= match-value "") true
