@@ -12,7 +12,7 @@
 
 ;; order the fields are read in
 (def -field-order [:name :url :maintained :linux :mac :windows :ui :retail :classic :f-oss :source-available :ads :eula :language
-                   :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons :feature-wowace
+                   :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons
                    :feature-catalog-search])
 
 (def -state-template
@@ -23,7 +23,7 @@
    ;; fields that can be selected
    ;; we need this to know how to create and check permalinks
    :selectable-fields [:maintained :linux :mac :windows :ui :retail :classic :f-oss :source-available :ads :eula :language
-                       :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons :feature-wowace
+                       :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons
                        :feature-catalog-search]
 
    ;; map of :name and :description for selected preset
@@ -38,7 +38,7 @@
 
 (def profiles
   {:default {:description "some basic filtering, good for everybody"
-             :field-order (into [:project] (remove #{:ads :eula :source-available :f-oss :language :feature-wowace :feature-vcs-addons} -field-order))
+             :field-order (into [:project] (remove #{:ads :eula :source-available :f-oss :language :feature-vcs-addons} -field-order))
              :selected-fields {:maintained "yes" :classic "yes"}}
    
    :unfiltered {:description "no filtering, ordered by 'maintained' and then by 'name'"
