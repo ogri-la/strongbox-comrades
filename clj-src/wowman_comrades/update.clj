@@ -169,7 +169,7 @@
                   has-recent-commit)))))
 
 ;; exceptions:
-;; wow-better-cli, github isn't detecting the licence correctly (it's mit reporting as 'other')
+;; wow-better-cli, wadman: github isn't detecting the licence correctly (it's mit reporting as 'other')
 ;; waup, doesn't have a LICENCE file but it's source says BSD
 (defn f-oss?
   [row]
