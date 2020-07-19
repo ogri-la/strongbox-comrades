@@ -1,10 +1,10 @@
-(ns wowman-comrades.core
+(ns strongbox-comrades.core
   (:require
-   [wowman-comrades.utils :as utils :refer [debug info warn error spy in? kv-filter kv-map]]
+   [strongbox-comrades.utils :as utils :refer [debug info warn error spy in? kv-filter kv-map]]
    [testdouble.cljs.csv :as csv]
    [cljs-http.client :as http])
   (:require-macros
-   [wowman-comrades.macro :as macro]))
+   [strongbox-comrades.macro :as macro]))
 
 (def unselected "")
 

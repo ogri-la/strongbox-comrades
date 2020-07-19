@@ -1,7 +1,7 @@
-(ns wowman-comrades.ui
+(ns strongbox-comrades.ui
   (:require
-   [wowman-comrades.core :as core :refer [unselected]]
-   [wowman-comrades.utils :as utils :refer [debug info warn error spy kv-map format]]
+   [strongbox-comrades.core :as core :refer [unselected]]
+   [strongbox-comrades.utils :as utils :refer [debug info warn error spy kv-map format]]
    [rum.core :as rum]
    ))
 
@@ -130,7 +130,7 @@ or compilation or similar."]
    [:li [:strong [:code "*"]] " Linux OS caveat: if a packaged version of the addon manager exists for " [:em "at least one"] " distribution of Linux, I drop the caveat asterisk.
 This may be an AUR, DEB, RPM/DNF, Snap, Flatpak, Zypper, AppImage, etc."]
    [:li [:strong [:code "^"]] " VCS caveat: only supports VCS through services like Github/Bitbucket/Gitlab and not git/hg/svn etc directly."]
-   [:li [:a {:href "https://github.com/ogri-la/wowman-comrades/issues" :target "_blank"} "report any issues here"]]])
+   [:li [:a {:href "https://github.com/ogri-la/strongbox-comrades/issues" :target "_blank"} "report any issues here"]]])
 
 (rum/defc root-component < rum/reactive
   []

@@ -1,4 +1,4 @@
-(ns wowman-comrades.update
+(ns strongbox-comrades.update
   (:require
    [clojure.string :as string]
    [clojure.tools.namespace.repl :refer [refresh]]
@@ -10,7 +10,7 @@
    [hiccup.core :as hiccup :refer [html]]
    ))
 
-(def cache-dir "/tmp/wowman-comrades/cache")
+(def cache-dir "/tmp/strongbox-comrades/cache")
 
 (defn write-csv!
   [rows output-file]

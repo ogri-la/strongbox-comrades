@@ -1,8 +1,8 @@
-(ns wowman-comrades.main
+(ns strongbox-comrades.main
   (:require
-   [wowman-comrades.core :as core]
-   [wowman-comrades.utils :as utils]
-   [wowman-comrades.ui :as ui]))
+   [strongbox-comrades.core :as core]
+   [strongbox-comrades.utils :as utils]
+   [strongbox-comrades.ui :as ui]))
 
 (enable-console-print!)
 

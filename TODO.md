@@ -26,17 +26,17 @@
         - copy compiled files to website
         - commit
         - split comrades.csv into two, maintained and not
-            - create a branch on wowman
+            - create a branch on strongbox
             - update README
             - open a PR
     - done
 
 ## todo
 
-* add link *back* to wowman 'other addon managers'
+* add link *back* to strongbox 'other addon managers'
 * add description, declare bias
 * add link for submitting an update
-    - link should go to wowman-comrades repo, not wowman
+    - link should go to strongbox-comrades repo, not strongbox
 * options available in dropdowns should become more limited as filters narrow
 * CI
     - maybe investigate Github actions?

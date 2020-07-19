@@ -1,6 +1,6 @@
-(defproject ogri-la/wowman-comrades "0.2.0-unreleased"
-  :description "wowman comrades.csv SPA"
-  :url "https://github.com/ogri-la/wowman-comrades"
+(defproject ogri-la/strongbox-comrades "0.2.0-unreleased"
+  :description "strongbox comrades.csv SPA"
+  :url "https://github.com/ogri-la/strongbox-comrades"
   :license {:name "GNU Affero General Public License (AGPL)"
             :url "https://www.gnu.org/licenses/agpl-3.0.en.html"}
 
@@ -39,7 +39,7 @@
              ]]
 
   ;; not possible for figwheel: https://github.com/bhauman/lein-figwheel/issues/614
-  :main wowman-comrades.update
+  :main strongbox-comrades.update
 
   :source-paths ["src" "clj-src"]
 
@@ -50,16 +50,16 @@
                 ;; The presence of a :figwheel configuration here
                 ;; will cause figwheel to inject the figwheel client
                 ;; into your build
-                :figwheel {:on-jsload "wowman-comrades.main/on-js-reload"
+                :figwheel {:on-jsload "strongbox-comrades.main/on-js-reload"
                            ;; :open-urls will pop open your application
                            ;; in the default browser once Figwheel has
                            ;; started and compiled your application.
                            ;; Comment this out once it no longer serves you.
                            :open-urls ["http://localhost:3449/index.html"]}
 
-                :compiler {:main wowman-comrades.main
+                :compiler {:main strongbox-comrades.main
                            :asset-path "js/compiled/out"
-                           :output-to "resources/public/js/compiled/wowman_comrades.js"
+                           :output-to "resources/public/js/compiled/strongbox_comrades.js"
                            :output-dir "resources/public/js/compiled/out"
                            :source-map-timestamp true
                            ;; To console.log CLJS data-structures make sure you enable devtools in Chrome
@@ -70,8 +70,8 @@
                ;; lein cljsbuild once min
                {:id "min"
                 :source-paths ["src"]
-                :compiler {:output-to "resources/public/js/compiled/wowman_comrades.js"
-                           :main wowman-comrades.main
+                :compiler {:output-to "resources/public/js/compiled/strongbox_comrades.js"
+                           :main strongbox-comrades.main
                            :optimizations :advanced
                            ;;:pseudo-names true
                            :pretty-print false}}]}

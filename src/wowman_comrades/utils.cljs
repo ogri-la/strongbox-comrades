@@ -1,4 +1,4 @@
-(ns wowman-comrades.utils
+(ns strongbox-comrades.utils
   (:require
    [cuerdas.core :as str]))
 

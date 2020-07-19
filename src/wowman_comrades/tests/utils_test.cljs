@@ -1,6 +1,6 @@
-(ns wowman-comrades.tests.utils-test
+(ns strongbox-comrades.tests.utils-test
   (:require
-   [wowman-comrades.utils :as utils]
+   [strongbox-comrades.utils :as utils]
    [cljs.test :refer-macros [deftest is testing run-tests]]
    ))
 

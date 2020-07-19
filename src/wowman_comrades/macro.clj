@@ -1,4 +1,4 @@
-(ns wowman-comrades.macro)
+(ns strongbox-comrades.macro)
 
 ;; touch this file to reload comrades.csv 
 

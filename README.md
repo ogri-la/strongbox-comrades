@@ -1,9 +1,9 @@
-# wowman-comrades
+# strongbox-comrades
 
-A [website](https://ogri-la.github.io/wow-addon-managers/) for wowman's 
+A [website](https://ogri-la.github.io/wow-addon-managers/) for strongbox's 
 [comrades.csv](./comrades.csv) file.
 
-[![wowman-comrades](./screenshots/0.2.1.png)](./screenshots/0.2.1.png?raw=true) 
+[![strongbox-comrades](./screenshots/0.2.1.png)](./screenshots/0.2.1.png?raw=true) 
 
 ## Local development
 

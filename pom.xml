@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>ogri-la</groupId>
-  <artifactId>wowman-comrades</artifactId>
+  <artifactId>strongbox-comrades</artifactId>
   <packaging>jar</packaging>
   <version>0.2.0-unreleased</version>
-  <name>wowman-comrades</name>
-  <description>wowman comrades.csv SPA</description>
-  <url>https://github.com/ogri-la/wowman-comrades</url>
+  <name>strongbox-comrades</name>
+  <description>strongbox comrades.csv SPA</description>
+  <url>https://github.com/ogri-la/strongbox-comrades</url>
   <licenses>
     <license>
       <name>GNU Affero General Public License (AGPL)</name>
@@ -14,9 +14,9 @@
     </license>
   </licenses>
   <scm>
-    <url>https://github.com/ogri-la/wowman-comrades</url>
-    <connection>scm:git:git://github.com/ogri-la/wowman-comrades.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/ogri-la/wowman-comrades.git</developerConnection>
+    <url>https://github.com/ogri-la/strongbox-comrades</url>
+    <connection>scm:git:git://github.com/ogri-la/strongbox-comrades.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/ogri-la/strongbox-comrades.git</developerConnection>
     <tag>f1baf678ca7ce33deb8758e40113cbc9b0126803</tag>
   </scm>
   <build>
