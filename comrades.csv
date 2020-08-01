@@ -33,6 +33,7 @@ vargen2/Addon,https://github.com/vargen2/Addon,no,no,no,yes*,GUI,yes,yes,yes,yes
 AcidWeb/CurseBreaker,https://github.com/AcidWeb/CurseBreaker,yes,yes,yes,yes,TUI,yes,yes,yes,yes,no,no,Python,yes,yes,yes,yes^,yes
 antiwinter/wowa,https://github.com/antiwinter/wowa,yes,yes*,yes*,yes*,CLI,yes,yes,yes,yes,no,no,JavaScript,yes,yes,yes,yes,yes
 camas/grunt,https://github.com/camas/grunt,yes,yes*,no,yes*,CLI,yes,yes,yes,yes,no,no,Rust,yes,no,no,no,no
+casperstorm/ajour,https://github.com/casperstorm/ajour,yes,yes,no,yes,GUI,yes,yes,yes,yes,no,no,Rust,no,no,no,no,no
 ColbyWanShinobi/cullingOfStratholme,https://github.com/ColbyWanShinobi/cullingOfStratholme,yes,yes,no,no,CLI,yes,yes,yes,yes,no,no,Shell,yes,yes,no,yes,no
 cowdude/wowaddonmanager,https://github.com/cowdude/wowaddonmanager,no,yes*,yes*,yes*,CLI,yes,no,no,yes,no,no,Python,yes,no,no,no,no
 csmith/wadman,https://github.com/csmith/wadman,yes,no,no,yes*,CLI,yes,no,yes,yes,no,no,Go,yes,no,no,no,yes
