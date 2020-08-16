@@ -25,6 +25,7 @@ WorldOfAddons,https://github.com/WorldofAddons/worldofaddons,no,yes*,yes*,yes,GU
 WoWAceUpdater,https://sourceforge.net/projects/wowaceupdater/,no,no,no,yes,GUI,yes,no,yes,yes,?,?,?,no,no,no,no,yes
 wttw/wowaddon,https://github.com/wttw/wowaddon,no,yes,yes,yes,CLI,yes,no,yes,yes,no,no,Go,yes,no,yes,no,yes
 Auo/lazy-turnip,https://github.com/Auo/lazy-turnip,no!,no,yes*,yes,GUI,yes,yes,no,yes,no,no,JavaScript,yes,yes,no,no,yes
+cowdude/wowaddonmanager,https://github.com/cowdude/wowaddonmanager,no!,yes*,yes*,yes*,CLI,yes,no,no,yes,no,no,Python,yes,no,no,no,no
 glorpen/curse,https://github.com/glorpen/curse,no!,yes*,no,yes*,CLI,yes,no,yes,yes,no,no,C,yes,no,no,no,no
 kuhnertdm/wow-addon-updater,https://github.com/kuhnertdm/wow-addon-updater,no!,yes*,yes*,yes*,CLI,yes,no,yes,yes,no,no,Python,yes,yes,yes,no,no
 Sumolari/WAM,https://github.com/Sumolari/WAM,no!,no,yes*,no,CLI,yes,no,yes,yes,no,no,CoffeeScript,yes,no,no,no,no
@@ -35,7 +36,6 @@ antiwinter/wowa,https://github.com/antiwinter/wowa,yes,yes*,yes*,yes*,CLI,yes,ye
 camas/grunt,https://github.com/camas/grunt,yes,yes*,no,yes*,CLI,yes,yes,yes,yes,no,no,Rust,yes,no,no,no,no
 casperstorm/ajour,https://github.com/casperstorm/ajour,yes,yes,no,yes,GUI,yes,yes,yes,yes,no,no,Rust,no,no,no,no,no
 ColbyWanShinobi/cullingOfStratholme,https://github.com/ColbyWanShinobi/cullingOfStratholme,yes,yes,no,no,CLI,yes,yes,yes,yes,no,no,Shell,yes,yes,no,yes,no
-cowdude/wowaddonmanager,https://github.com/cowdude/wowaddonmanager,no!,yes*,yes*,yes*,CLI,yes,no,no,yes,no,no,Python,yes,no,no,no,no
 csmith/wadman,https://github.com/csmith/wadman,yes,no,no,yes*,CLI,yes,no,yes!,yes,no,no,Go,yes,no,no,no,yes
 dark0dave/wow-addon-updater,https://gitlab.com/dark0dave/wow-addon-updater,yes,yes*,yes*,yes*,CLI,yes,yes,yes,yes,no,no,Python,yes,yes,yes,yes^,no
 ephraim/lcurse,https://github.com/ephraim/lcurse,yes,yes*,yes*,yes*,GUI,yes,yes,no,yes,no,no,Python,yes,no,no,no,no
@@ -49,6 +49,7 @@ karolswdev/wow,https://github.com/karolswdev/wow,yes,no,yes*,yes*,CLI,no,yes,no,
 layday/instawow,https://github.com/layday/instawow,yes,yes,yes,yes,CLI,yes,yes,yes,yes,no,no,Python,yes,yes,yes,yes^,yes
 Lund259/WoW-Addon-Manager,https://github.com/Lund259/WoW-Addon-Manager,yes,no,no,yes,GUI,yes,no,yes,yes,no,no,C#,no,no,no,no,no
 Mangmasta/MangManager,https://github.com/Mangmasta/MangManager,yes,yes*,yes*,yes*,CLI,yes,yes,no,yes,no,no,C++,yes,no,no,no,no
+MR2011/wowAddonManager,https://github.com/MR2011/wowAddonManager,yes,yes,no,no,TUI,yes,yes,yes,yes,no,no,Rust,yes,no,no,no,yes
 nazarov-tech/wowa,https://github.com/bruno-gelb/wowa,yes,yes*,yes*,yes*,CLI,yes,no,yes,yes,no,no,Python,yes,no,no,no,no
 ogri-la/strongbox,https://github.com/ogri-la/strongbox,yes,yes,yes*,no,GUI,yes,yes,yes,yes,no,no,Clojure,yes,yes,yes,yes^,yes
 Tukui Client,https://www.tukui.org/download.php?client=win,yes,no,no,yes,GUI,yes,no,no,no,?,?,?,no,no,yes,no,yes
