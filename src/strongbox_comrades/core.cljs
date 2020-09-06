@@ -11,7 +11,8 @@
 (def comrades (macro/compile-time-comrades-csv)) ;; compile-time data
 
 ;; order the fields are read in
-(def -field-order [:name :url :maintained :linux :mac :windows :ui :retail :classic :f-oss :source-available :ads :eula :language
+(def -field-order [:name :url :maintained :linux :mac :windows :ui :retail :classic
+                   :f-oss :software-licence :source-available :eula :ads :language
                    :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons
                    :feature-catalog-search])
 
@@ -22,7 +23,8 @@
 
    ;; fields that can be selected
    ;; we need this to know how to create and check permalinks
-   :selectable-fields [:maintained :linux :mac :windows :ui :retail :classic :f-oss :source-available :ads :eula :language
+   :selectable-fields [:maintained :linux :mac :windows :ui :retail :classic
+                       :f-oss :software-licence :source-available :eula :ads :language
                        :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons
                        :feature-catalog-search]
 
@@ -38,7 +40,7 @@
 
 (def profiles
   {:default {:description "some basic filtering, good for everybody"
-             :field-order (into [:project] (remove #{:ads :eula :source-available :f-oss :language :feature-vcs-addons} -field-order))
+             :field-order (into [:project] (remove #{:ads :eula :source-available :software-licence :f-oss :language :feature-vcs-addons} -field-order))
              :selected-fields {:maintained "yes" :classic "yes"}}
    
    :unfiltered {:description "no filtering, ordered by 'maintained' and then by 'name'"
@@ -54,7 +56,7 @@
    ;;                           :ui "GUI"}}
 
    :linux {:description "good choices for Linux users"
-           :field-order [:project :retail :classic :ui :f-oss :source-available :ads :eula
+           :field-order [:project :retail :classic :ui :f-oss :source-available :software-licence :ads :eula
                          :language
                          :feature-curseforge :feature-wowinterface :feature-tukui
                          :feature-catalog-search]
@@ -139,7 +141,9 @@
         preset-parameters [:name] ;; :preset/name
         supported-keywords (into preset-parameters known-csv-columns)
 
-        max-val-len (inc (count "javascript"))
+        ;; the longest value we can expect. longer than this and it's ignored.
+        ;; affects permalinks.
+        max-val-len (inc (count "noassertion")) ;; previously 'javascript'
         
         ;; strips out any query namespaces we're not looking at
         ;; strips out any keywords that don't match a known field

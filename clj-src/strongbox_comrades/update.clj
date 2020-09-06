@@ -195,6 +195,14 @@
   (when-let [data (github-data row)]
     (get data "language")))
 
+(defn licence
+  [row]
+  (when-let [data (github-data row)]
+    (let [spdx (some-> data (get "license") (get "spdx_id"))]
+      ;; essentially a 'none/null/nil' value for spdx identifiers
+      (when-not (= "NOASSERTION" spdx)
+        spdx))))
+
 ;;
 
 (defn update-row
@@ -216,6 +224,7 @@
                  (-> row
                      (update-row "Name" github-repo-name)
                      (update-row "Maintained" maintained?)
+                     (update-row "Software Licence" licence)
                      (update-row "F/OSS" f-oss?)
                      (update-row "Source Available" source-available?)
                      (update-row "Language" language)))]
