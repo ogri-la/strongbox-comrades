@@ -46,7 +46,7 @@ grrttedwards/wow-addon-updater,https://github.com/grrttedwards/wow-addon-updater
 Jerry-Ma/wowplug,https://github.com/Jerry-Ma/wowplug,yes,yes*,yes*,yes*,CLI,yes,no,yes,BSD-3-Clause,yes,no,no,Python,yes,no,no,yes*,yes
 jliddev/WowUp,https://github.com/jliddev/WowUp,yes,no,no,yes,GUI,yes,yes,yes,GPL-3.0,yes,no,no,C#,yes,yes,yes,yes^,yes
 karolswdev/wow,https://github.com/karolswdev/wow,yes,no,yes*,yes*,CLI,no,yes,no,noassertion,yes,no,no,C#,no,no,no,no,yes
-layday/instawow,https://github.com/layday/instawow,yes,yes,yes,yes,GUI*,yes,yes,yes,GPL-3.0,yes,no,no,Python,yes,yes,yes,yes*,yes
+layday/instawow,https://github.com/layday/instawow,yes,yes,yes,yes,CLI,yes,yes,yes,GPL-3.0,yes,no,no,Python,yes,yes,yes,yes*,yes
 Lund259/WoW-Addon-Manager,https://github.com/Lund259/WoW-Addon-Manager,yes,no,no,yes,GUI,yes,no,yes,GPL-3.0,yes,no,no,C#,no,no,no,no,no
 Mangmasta/MangManager,https://github.com/Mangmasta/MangManager,yes,yes*,yes*,yes*,CLI,yes,yes,no,noassertion,yes,no,no,C++,yes,no,no,no,no
 MR2011/wowAddonManager,https://github.com/MR2011/wowAddonManager,yes,yes,no,no,TUI,yes,yes,yes,MIT,yes,no,no,Rust,yes,no,no,no,yes
