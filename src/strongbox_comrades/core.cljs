@@ -82,7 +82,7 @@
                                :windows "yes"
                                :retail "yes" :classic "yes"}}
    
-   :perfect {:description "my perfect addon manager (doesn't exist)"
+   :perfect {:description "perfect addon managers (tick all the right boxes)"
              :selected-fields {:maintained "yes"
                                :windows "yes" :mac "yes" :linux "yes"
                                :ui "GUI"

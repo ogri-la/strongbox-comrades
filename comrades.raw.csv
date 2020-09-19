@@ -7,6 +7,7 @@ gdraynz/addon-installer,https://github.com/gdraynz/addon-installer,no,yes*,yes*,
 JonasKnarbakk/GWAM,https://github.com/JonasKnarbakk/GWAM,no,yes*,yes*,yes*,GUI,yes,no,yes,GPL-3.0,yes,no,no,C++,yes,no,no,no,yes
 kemayo/waup,https://github.com/kemayo/waup,no,yes*,no,no,CLI,yes,no,yes!,BSD-3-Clause,yes,no,no,Python,no,no,no,no,no
 Kev/macaceupdater,https://github.com/Kev/macaceupdater,no,no,yes*,no,GUI,yes,no,yes,GPL-2.0,yes,no,no,C,no,no,no,no,no
+Mangmasta/MangManager,https://github.com/Mangmasta/MangManager,no,yes*,yes*,yes*,CLI,yes,yes,no,noassertion,yes,no,no,C++,yes,no,no,no,no
 MBODM/WADM,https://github.com/MBODM/WADM,no,no,no,yes,GUI,yes,no,yes,MIT,yes,no,no,C#,yes,no,no,no,no
 Minion,https://minion.mmoui.com/,no,yes*,yes,yes,GUI,yes,yes,no,noassertion,no,yes,yes,Java,no,yes,no,no,yes
 Morganstern/AddonManager,https://github.com/Morganstern/AddonManager,no,no,no,yes*,GUI,yes,no,yes,ISC,yes,no,no,C#,yes,no,yes,no,no
@@ -46,9 +47,8 @@ grrttedwards/wow-addon-updater,https://github.com/grrttedwards/wow-addon-updater
 Jerry-Ma/wowplug,https://github.com/Jerry-Ma/wowplug,yes,yes*,yes*,yes*,CLI,yes,no,yes,BSD-3-Clause,yes,no,no,Python,yes,no,no,yes*,yes
 jliddev/WowUp,https://github.com/jliddev/WowUp,yes,no,no,yes,GUI,yes,yes,yes,GPL-3.0,yes,no,no,C#,yes,yes,yes,yes^,yes
 karolswdev/wow,https://github.com/karolswdev/wow,yes,no,yes*,yes*,CLI,no,yes,no,noassertion,yes,no,no,C#,no,no,no,no,yes
-layday/instawow,https://github.com/layday/instawow,yes,yes,yes,yes,CLI,yes,yes,yes,GPL-3.0,yes,no,no,Python,yes,yes,yes,yes*,yes
+layday/instawow,https://github.com/layday/instawow,yes,yes,yes,yes,GUI,yes,yes,yes,GPL-3.0,yes,no,no,Python,yes,yes,yes,yes*,yes
 Lund259/WoW-Addon-Manager,https://github.com/Lund259/WoW-Addon-Manager,yes,no,no,yes,GUI,yes,no,yes,GPL-3.0,yes,no,no,C#,no,no,no,no,no
-Mangmasta/MangManager,https://github.com/Mangmasta/MangManager,yes,yes*,yes*,yes*,CLI,yes,yes,no,noassertion,yes,no,no,C++,yes,no,no,no,no
 MR2011/wowAddonManager,https://github.com/MR2011/wowAddonManager,yes,yes,no,no,TUI,yes,yes,yes,MIT,yes,no,no,Rust,yes,no,no,no,yes
 nazarov-tech/wowa,https://github.com/bruno-gelb/wowa,yes,yes*,yes*,yes*,CLI,yes,no,yes,MIT,yes,no,no,Python,yes,no,no,no,no
 ogri-la/strongbox,https://github.com/ogri-la/strongbox,yes,yes,yes*,no,GUI,yes,yes,yes,AGPL-3.0,yes,no,no,Clojure,yes,yes,yes,yes*,yes
