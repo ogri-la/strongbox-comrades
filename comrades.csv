@@ -41,7 +41,7 @@ casperstorm/ajour,https://github.com/casperstorm/ajour,yes,yes,yes,yes,GUI,yes,y
 ColbyWanShinobi/cullingOfStratholme,https://github.com/ColbyWanShinobi/cullingOfStratholme,yes,yes,no,no,CLI,yes,yes,yes,GPL-2.0,yes,no,no,Shell,yes,yes,no,yes,no
 csmith/wadman,https://github.com/csmith/wadman,yes,no,no,yes*,CLI,yes,no,yes,MIT,yes,no,no,Go,yes,no,no,no,yes
 dark0dave/wow-addon-updater,https://gitlab.com/dark0dave/wow-addon-updater,yes,yes*,yes*,yes*,CLI,yes,yes,yes,GPL-3.0,yes,no,no,Python,yes,yes,yes,yes*,no
-ephraim/lcurse,https://github.com/ephraim/lcurse,yes,yes*,yes*,yes*,GUI,yes,yes,no,Unlicense,yes,no,no,Python,yes,no,no,no,no
+ephraim/lcurse,https://github.com/ephraim/lcurse,no,yes*,yes*,yes*,GUI,yes,yes,no,Unlicense,yes,no,no,Python,yes,no,no,no,no
 erikabp123/ClassicAddonManager,https://github.com/erikabp123/ClassicAddonManager,yes,no,no,yes,GUI,no,yes,yes,GPL-3.0,yes,no,no,Java,yes,yes,no,yes*,no
 gdraynz/wowui,https://github.com/gdraynz/wowui,yes,yes*,yes*,yes*,GUI,yes,yes,no,noassertion,yes,no,no,JavaScript,yes,yes,yes,yes*,yes
 Gonzih/wow-addon-manager,https://github.com/Gonzih/wow-addon-manager,yes,yes*,yes*,yes*,CLI,yes,yes,yes,MIT,yes,no,no,Go,yes,no,no,no,no
