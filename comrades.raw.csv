@@ -10,7 +10,7 @@ JonasKnarbakk/GWAM,https://github.com/JonasKnarbakk/GWAM,no,yes*,yes*,yes*,GUI,y
 kemayo/waup,https://github.com/kemayo/waup,no,yes*,no,no,CLI,yes,no,yes!,BSD-3-Clause,yes,no,no,Python,no,no,no,no,no
 Kev/macaceupdater,https://github.com/Kev/macaceupdater,no,no,yes*,no,GUI,yes,no,yes,GPL-2.0,yes,no,no,C,no,no,no,no,no
 Mangmasta/MangManager,https://github.com/Mangmasta/MangManager,no,yes*,yes*,yes*,CLI,yes,yes,no,noassertion,yes,no,no,C++,yes,no,no,no,no
-MBODM/WADM,https://github.com/MBODM/WADM,no,no,no,yes,GUI,yes,no,yes,MIT,yes,no,no,C#,yes,no,no,no,no
+MBODM/WADM,https://github.com/MBODM/WADM,yes,no,no,yes,GUI,yes,no,yes,MIT,yes,no,no,C#,yes,no,no,no,no
 Minion,https://minion.mmoui.com/,no,yes*,yes,yes,GUI,yes,yes,no,noassertion,no,yes,yes,Java,no,yes,no,no,yes
 Morganstern/AddonManager,https://github.com/Morganstern/AddonManager,no,no,no,yes*,GUI,yes,no,yes,ISC,yes,no,no,C#,yes,no,yes,no,no
 OpenAddOnManager,https://github.com/OpenAddOnManager/OpenAddOnManager,no,no,no,yes,GUI,yes,no,yes,Apache-2.0,yes,no,no,C#,no,no,no,no,no
@@ -51,12 +51,13 @@ karolswdev/wow,https://github.com/karolswdev/wow,yes,no,yes*,yes*,CLI,no,yes,no,
 layday/instawow,https://github.com/layday/instawow,yes,yes,yes,yes,GUI,yes,yes,yes,GPL-3.0,yes,no,no,Python,yes,yes,yes,yes*,yes
 Lund259/WoW-Addon-Manager,https://github.com/Lund259/WoW-Addon-Manager,yes,no,no,yes,GUI,yes,no,yes,GPL-3.0,yes,no,no,C#,no,no,no,no,no
 MR2011/wowAddonManager,https://github.com/MR2011/wowAddonManager,yes,yes,no,no,TUI,yes,yes,yes,MIT,yes,no,no,Rust,yes,no,no,no,yes
-nazarov-tech/wowa,https://github.com/bruno-gelb/wowa,yes,yes*,yes*,yes*,CLI,yes,no,yes,MIT,yes,no,no,Python,yes,no,no,no,no
+nazarov-tech/wowa,https://github.com/bruno-gelb/wowa,no,yes*,yes*,yes*,CLI,yes,no,yes,MIT,yes,no,no,Python,yes,no,no,no,no
 ogri-la/strongbox,https://github.com/ogri-la/strongbox,yes,yes,yes*,no,GUI,yes,yes,yes,AGPL-3.0,yes,no,no,Clojure,yes,yes,yes,yes*,yes
 Singularity Addon Manager,https://singularitymods.com/,yes,no,yes,yes,GUI,yes,yes,no,noassertion,no,yes,yes,?,yes,yes,yes,no,yes
 TiredCoders/wow-pantheon,https://github.com/TiredCoders/wow-pantheon,yes,no,no,yes*,GUI,yes,yes,no,noassertion,yes,no,no,JavaScript,yes,no,no,no,yes
 Tukui Client,https://www.tukui.org/download.php?client=win,yes,no,no,yes,GUI,yes,no,no,noassertion,no,?,?,?,no,no,yes,no,yes
 Twitch App,https://www.twitch.tv/downloads,yes,no,yes,yes,GUI,yes,yes,no,noassertion,no,yes,yes,?,yes,no,no,no,yes
+varexi/slipstream,https://github.com/varexi/slipstream,yes,no,yes,yes,GUI,yes,yes,yes,GPL-3.0,yes,no,no,TypeScript,yes,no,no,no,yes
 woblight/GitAddonsManager,https://gitlab.com/woblight/GitAddonsManager,yes,yes*,no,yes*,GUI,yes,no,yes,GPL-3.0,yes,no,no,C++,no,no,no,yes,no
 wowclassicui/desktop,https://github.com/wowclassicui/desktop,yes,yes*,no,yes,GUI,no,yes,no,noassertion,yes,no,no,Vue,no,no,no,no,yes*
 wowmatrix,https://www.wowmatrix.com/,yes,yes,yes,yes,GUI,yes,no,no,noassertion,no,yes,yes,?,no,no,no,no,yes
