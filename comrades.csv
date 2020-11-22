@@ -46,7 +46,7 @@ erikabp123/ClassicAddonManager,https://github.com/erikabp123/ClassicAddonManager
 gdraynz/wowui,https://github.com/gdraynz/wowui,yes,yes*,yes*,yes*,GUI,yes,yes,no,noassertion,yes,no,no,JavaScript,yes,yes,yes,yes*,yes
 Gonzih/wow-addon-manager,https://github.com/Gonzih/wow-addon-manager,yes,yes*,yes*,yes*,CLI,yes,yes,yes,MIT,yes,no,no,Go,yes,no,no,no,no
 grrttedwards/wow-addon-updater,https://github.com/grrttedwards/wow-addon-updater,yes,yes*,yes*,yes*,CLI,yes,yes,yes,GPL-3.0,yes,no,no,Python,yes,yes,yes,yes*,no
-jliddev/WowUp,https://github.com/jliddev/WowUp,yes,no,no,yes,GUI,yes,yes,yes,GPL-3.0,yes,no,no,C#,yes,yes,yes,yes^,yes
+jliddev/WowUp,https://github.com/jliddev/WowUp,yes,yes,yes,yes,GUI,yes,yes,yes,GPL-3.0,yes,no,no,C#,yes,yes,yes,yes^,yes
 karolswdev/wow,https://github.com/karolswdev/wow,yes,no,yes*,yes*,CLI,no,yes,no,noassertion,yes,no,no,C#,no,no,no,no,yes
 layday/instawow,https://github.com/layday/instawow,yes,yes,yes,yes,GUI,yes,yes,yes,GPL-3.0,yes,no,no,Python,yes,yes,yes,yes*,yes
 Lund259/WoW-Addon-Manager,https://github.com/Lund259/WoW-Addon-Manager,yes,no,no,yes,GUI,yes,no,yes,GPL-3.0,yes,no,no,C#,no,no,no,no,no
