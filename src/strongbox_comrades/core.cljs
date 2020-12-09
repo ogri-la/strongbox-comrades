@@ -14,7 +14,7 @@
 (def -field-order [:name :url :maintained :linux :mac :windows :ui :retail :classic
                    :f-oss :software-licence :source-available :eula :ads :language
                    :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons
-                   :feature-catalog-search])
+                   :feature-catalog-search :feature-wago.io])
 
 (def -state-template
   {;; fields are displayed in the order they are read in by default
@@ -26,7 +26,7 @@
    :selectable-fields [:maintained :linux :mac :windows :ui :retail :classic
                        :f-oss :software-licence :source-available :eula :ads :language
                        :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons
-                       :feature-catalog-search]
+                       :feature-catalog-search :feature-wago.io]
 
    ;; map of :name and :description for selected preset
    :profile nil
@@ -40,7 +40,7 @@
 
 (def profiles
   {:default {:description "some basic filtering, good for everybody"
-             :field-order (into [:project] (remove #{:ads :eula :source-available :software-licence :f-oss :language :feature-vcs-addons} -field-order))
+             :field-order (into [:project] (remove #{:ads :eula :source-available :software-licence :f-oss :language :feature-vcs-addons :feature-wago.io} -field-order))
              :selected-fields {:maintained "yes" :classic "yes"}}
    
    :unfiltered {:description "no filtering, ordered by 'maintained' and then by 'name'"
