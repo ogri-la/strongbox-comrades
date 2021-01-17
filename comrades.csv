@@ -10,6 +10,7 @@ JonasKnarbakk/GWAM,https://github.com/JonasKnarbakk/GWAM,no,yes*,yes*,yes*,GUI,y
 karolswdev/wow,https://github.com/karolswdev/wow,no,no,yes*,yes*,CLI,no,yes,no,noassertion,yes,no,no,C#,no,no,no,no,yes,no
 kemayo/waup,https://github.com/kemayo/waup,no,yes*,no,no,CLI,yes,no,yes,BSD-3-Clause,yes,no,no,Python,no,no,no,no,no,no
 Kev/macaceupdater,https://github.com/Kev/macaceupdater,no,no,yes*,no,GUI,yes,no,yes,GPL-2.0,yes,no,no,C,no,no,no,no,no,no
+Lund259/WoW-Addon-Manager,https://github.com/Lund259/WoW-Addon-Manager,no,no,no,yes,GUI,yes,no,yes,GPL-3.0,yes,no,no,C#,no,no,no,no,no,no
 Mangmasta/MangManager,https://github.com/Mangmasta/MangManager,no,yes*,yes*,yes*,CLI,yes,yes,no,noassertion,yes,no,no,C++,yes,no,no,no,no,no
 Minion,https://minion.mmoui.com/,no,yes*,yes,yes,GUI,yes,yes,no,noassertion,no,yes,yes,Java,no,yes,no,no,yes,no
 Morganstern/AddonManager,https://github.com/Morganstern/AddonManager,no,no,no,yes*,GUI,yes,no,yes,ISC,yes,no,no,C#,yes,no,yes,no,no,no
@@ -51,7 +52,6 @@ jliddev/WowUp,https://github.com/jliddev/WowUp,yes,yes,yes,yes,GUI,yes,yes,yes,G
 jukefr/osjswowau,https://github.com/jukefr/osjswowau,yes,yes,yes,yes,CLI,yes,no,yes,GPL-3.0,yes,no,no,JavaScript,yes,yes,yes,no,no,no
 Kumodatsu/wow-addon-manager,https://github.com/Kumodatsu/wow-addon-manager,yes,no,no,yes*,CLI,yes,no,yes,GPL-3.0,yes,no,no,Rust,yes,no,yes,yes*,no,no
 layday/instawow,https://github.com/layday/instawow,yes,yes,yes,yes,GUI,yes,yes,yes,GPL-3.0,yes,no,no,Python,yes,yes,yes,yes*,yes,yes
-Lund259/WoW-Addon-Manager,https://github.com/Lund259/WoW-Addon-Manager,yes,no,no,yes,GUI,yes,no,yes,GPL-3.0,yes,no,no,C#,no,no,no,no,no,no
 MBODM/WADM,https://github.com/MBODM/WADM,yes,no,no,yes,GUI,yes,no,yes,MIT,yes,no,no,C#,yes,no,no,no,no,no
 MR2011/wowAddonManager,https://github.com/MR2011/wowAddonManager,yes,yes,no,no,TUI,yes,yes,yes,MIT,yes,no,no,Rust,yes,no,no,no,yes,no
 ogri-la/strongbox,https://github.com/ogri-la/strongbox,yes,yes,yes*,no,GUI,yes,yes,yes,AGPL-3.0,yes,no,no,Clojure,yes,yes,yes,yes*,yes,no
