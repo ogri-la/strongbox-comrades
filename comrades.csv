@@ -55,7 +55,7 @@ layday/instawow,https://github.com/layday/instawow,yes,yes,yes,yes,GUI,yes,yes,y
 MBODM/WADM,https://github.com/MBODM/WADM,yes,no,no,yes,GUI,yes,no,yes,MIT,yes,no,no,C#,yes,no,no,no,no,no
 MR2011/wowAddonManager,https://github.com/MR2011/wowAddonManager,yes,yes,no,no,TUI,yes,yes,yes,MIT,yes,no,no,Rust,yes,no,no,no,yes,no
 ogri-la/strongbox,https://github.com/ogri-la/strongbox,yes,yes,yes*,no,GUI,yes,yes,yes,AGPL-3.0,yes,no,no,Clojure,yes,yes,yes,yes*,yes,no
-Singularity Addon Manager,https://singularitymods.com/,yes,no,yes,yes,GUI,yes,yes,no,noassertion,no,yes,yes,?,yes,yes,yes,no,yes,no
+Singularity Addon Manager,https://github.com/singularitymods/singularity-core,yes,no,yes,yes,GUI,yes,yes,yes,Apache-2.0,yes,yes,yes,JavaScript,yes,yes,yes,no,yes,no
 TiredCoders/wow-pantheon,https://github.com/TiredCoders/wow-pantheon,yes,no,no,yes*,GUI,yes,yes,no,noassertion,yes,no,no,JavaScript,yes,no,no,no,yes,no
 Tukui Client,https://www.tukui.org/download.php?client=win,yes,no,no,yes,GUI,yes,no,no,noassertion,no,?,?,?,no,no,yes,no,yes,no
 Twitch App,https://www.twitch.tv/downloads,yes,no,yes,yes,GUI,yes,yes,no,noassertion,no,yes,yes,?,yes,no,no,no,yes,no

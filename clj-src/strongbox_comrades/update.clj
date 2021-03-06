@@ -148,7 +148,7 @@
   "if given row is a project hosted on github, fetch it's data and return it"
   [row]
   (when (github-hosted? row)
-    (let [url (str "https://api.github.com/repos/" (repo-name-doubler (github-repo-name row)))]
+    (let [url (str "https://api.github.com/repos/" (-> row (get "URL") java.net.URL. .getPath (subs 1)))] ;;(repo-name-doubler (github-repo-name row)))]
       (-> url http-get json/read-str))))
 
 ;; exceptions:
