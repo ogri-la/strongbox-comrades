@@ -64,7 +64,13 @@
       (slurp key-path)
       
       (let [_ (prn "fetching" url)
-            result (:body (http/get url))]
+
+            ;; slurping a file comes with a newline ext, however clj-http+http doen't seem to care?
+            auth-token (or (System/getenv "GITHUB_TOKEN")
+                           (and (fs/exists? ".github-token") (slurp ".github-token")))
+            headers (cond-> {}
+                      auth-token (assoc :authorization (str "token " auth-token)))
+            result (:body (http/get url {:headers headers}))]
         (spit key-path result)
         result))))
 

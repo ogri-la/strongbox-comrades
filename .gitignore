@@ -12,4 +12,4 @@
 .eastwood
 .vagrant/
 resources/public/js/compiled/
-
+.github-token
