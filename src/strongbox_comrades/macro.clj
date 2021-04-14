@@ -1,6 +1,6 @@
 (ns strongbox-comrades.macro)
 
-;; touch this file to reload comrades.csv 
+;; touch this file to reload comrades.csv
 
 (defmacro compile-time-comrades-csv
   []

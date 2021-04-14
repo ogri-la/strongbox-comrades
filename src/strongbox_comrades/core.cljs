@@ -11,7 +11,7 @@
 (def comrades (macro/compile-time-comrades-csv)) ;; compile-time data
 
 ;; order the fields are read in
-(def -field-order [:name :url :maintained :linux :mac :windows :ui :retail :classic
+(def -field-order [:name :url :maintained :linux :mac :windows :ui :retail :classic :classic-tbc
                    :f-oss :software-licence :source-available :eula :ads :language
                    :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons
                    :feature-catalog-search :feature-wago.io])
@@ -23,7 +23,7 @@
 
    ;; fields that can be selected
    ;; we need this to know how to create and check permalinks
-   :selectable-fields [:maintained :linux :mac :windows :ui :retail :classic
+   :selectable-fields [:maintained :linux :mac :windows :ui :retail :classic :classic-tbc
                        :f-oss :software-licence :source-available :eula :ads :language
                        :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons
                        :feature-catalog-search :feature-wago.io]
@@ -46,17 +46,8 @@
    :unfiltered {:description "no filtering, ordered by 'maintained' and then by 'name'"
                 :selected-fields (zipmap (:selectable-fields -state-template) (repeat unselected))}
 
-   ;;:snarky {:description [:a {:href "https://store.steampowered.com/hwsurvey/Steam-Hardware-Software-Survey-Welcome-to-Steam?platform=combined"
-   ;;                           :target "_blank"}
-   ;;                       "\"statistically, this is probably for you\""]
-   ;;         :field-order [:project :windows :retail :classic]
-   ;;         :selected-fields {:maintained "yes"
-   ;;                           :windows "yes"
-   ;;                           :retail "yes" :classic "yes"
-   ;;                           :ui "GUI"}}
-
    :linux {:description "good choices for Linux users"
-           :field-order [:project :retail :classic :ui :f-oss :source-available :software-licence :ads :eula
+           :field-order [:project :retail :classic :classic-tbc :ui :f-oss :source-available :software-licence :ads :eula
                          :language
                          :feature-curseforge :feature-wowinterface :feature-tukui
                          :feature-catalog-search]
@@ -67,7 +58,7 @@
                              :retail "yes" :classic "yes"}}
    
    :mac {:description "good choices for mac users"
-         :field-order [:project :retail :classic :ui
+         :field-order [:project :retail :classic :classic-tbc :ui
                        :feature-curseforge :feature-wowinterface :feature-tukui
                        :feature-catalog-search]
          :selected-fields {:maintained "yes"
@@ -75,7 +66,7 @@
                            :retail "yes" :classic "yes"}}
 
    :windows {:description "good choices for windows users"
-             :field-order [:project :retail :classic :ui
+             :field-order [:project :retail :classic :classic-tbc :ui
                            :feature-curseforge :feature-wowinterface :feature-tukui
                            :feature-catalog-search]
              :selected-fields {:maintained "yes"
