@@ -47,7 +47,7 @@ ColbyWanShinobi/cullingOfStratholme,https://github.com/ColbyWanShinobi/cullingOf
 csmith/wadman,https://github.com/csmith/wadman,yes,no,no,yes*,CLI,yes,no,no,yes!,MIT,yes,no,no,Go,yes,no,no,no,yes,no
 dark0dave/wow-addon-updater,https://gitlab.com/dark0dave/wow-addon-updater,yes,yes*,yes*,yes*,CLI,yes,yes,no,yes,GPL-3.0,yes,no,no,Python,yes,yes,yes,yes*,no,no
 erikabp123/ClassicAddonManager,https://github.com/erikabp123/ClassicAddonManager,yes,no,no,yes,GUI,yes,yes,no,yes,GPL-3.0,yes,no,no,Java,yes,yes,yes,yes*,yes,no
-gdraynz/wowui,https://github.com/gdraynz/wowui,yes,yes*,yes*,yes*,GUI,yes,yes,no,no,noassertion,yes,no,no,JavaScript,yes,yes,yes,yes*,yes,no
+gdraynz/wowui,https://github.com/gdraynz/wowui,no!,yes*,yes*,yes*,GUI,yes,yes,no,no,noassertion,yes,no,no,JavaScript,yes,yes,yes,yes*,yes,no
 grrttedwards/wow-addon-updater,https://github.com/grrttedwards/wow-addon-updater,yes,yes*,yes*,yes*,CLI,yes,yes,no,yes,GPL-3.0,yes,no,no,Python,yes,yes,yes,yes*,no,no
 jliddev/WowUp,https://github.com/jliddev/WowUp,yes,yes,yes,yes,GUI,yes,yes,yes,yes,GPL-3.0,yes,no,no,TypeScript,yes,yes,yes,yes*,yes,no
 jukefr/osjswowau,https://github.com/jukefr/osjswowau,yes,yes,yes,yes,CLI,yes,no,no,yes,GPL-3.0,yes,no,no,JavaScript,yes,yes,yes,no,no,no
@@ -55,7 +55,7 @@ Kumodatsu/wow-addon-manager,https://github.com/Kumodatsu/wow-addon-manager,yes,n
 layday/instawow,https://github.com/layday/instawow,yes,yes,yes,yes,GUI,yes,yes,no,yes,GPL-3.0,yes,no,no,Python,yes,yes,yes,yes*,yes,yes
 MBODM/WADM,https://github.com/MBODM/WADM,yes,no,no,yes,GUI,yes,no,no,yes,MIT,yes,no,no,C#,yes,no,no,no,no,no
 MR2011/wowAddonManager,https://github.com/MR2011/wowAddonManager,yes,yes,no,no,TUI,yes,yes,no,yes,MIT,yes,no,no,Rust,yes,no,no,no,yes,no
-ogri-la/strongbox,https://github.com/ogri-la/strongbox,yes,yes,yes*,no,GUI,yes,yes,no,yes,AGPL-3.0,yes,no,no,Clojure,yes,yes,yes,yes*,yes,no
+ogri-la/strongbox,https://github.com/ogri-la/strongbox,yes,yes,yes*,no,GUI,yes,yes,yes,yes,AGPL-3.0,yes,no,no,Clojure,yes,yes,yes,yes*,yes,no
 Singularity Addon Manager,https://github.com/singularitymods/singularity-core,yes,no,yes,yes,GUI,yes,yes,no,yes,Apache-2.0,yes,yes,yes,JavaScript,yes,yes,yes,no,yes,no
 TiredCoders/wow-pantheon,https://github.com/TiredCoders/wow-pantheon,yes,no,no,yes*,GUI,yes,yes,no,no,noassertion,yes,no,no,JavaScript,yes,no,no,no,yes,no
 Tukui Client,https://www.tukui.org/download.php?client=win,yes,no,no,yes,GUI,yes,no,no,no,noassertion,no,?,?,?,no,no,yes,no,yes,no
