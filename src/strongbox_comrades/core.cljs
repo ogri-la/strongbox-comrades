@@ -41,7 +41,12 @@
 (def profiles
   {:default {:description "some basic filtering, good for everybody"
              :field-order (into [:project] (remove #{:ads :eula :source-available :software-licence :f-oss :language :feature-vcs-addons :feature-wago.io} -field-order))
-             :selected-fields {:maintained "yes" :retail "yes" :classic "yes" :ui "GUI" :feature-curseforge "yes"}}
+             :selected-fields {:maintained "yes"
+                               :retail "yes"
+                               :classic "yes"
+                               :classic-tbc "yes"
+                               :feature-curseforge "yes"
+                               :feature-wowinterface "yes"}}
    
    :unfiltered {:description "no filtering, ordered by 'maintained' and then by 'name'"
                 :selected-fields (zipmap (:selectable-fields -state-template) (repeat unselected))}
@@ -77,7 +82,7 @@
              :selected-fields {:maintained "yes"
                                :windows "yes" :mac "yes" :linux "yes"
                                :ui "GUI"
-                               :retail "yes" :classic "yes"
+                               :retail "yes" :classic "yes" :classic-tbc "yes"
                                :ads "no" :eula "no" :f-oss "yes"
                                :feature-curseforge "yes"
                                :feature-wowinterface "yes"
