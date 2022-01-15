@@ -63,7 +63,7 @@
     (if (fs/exists? key-path)
       (slurp key-path)
       
-      (let [_ (prn "fetching" url)
+      (let [_ (println "fetching" url)
 
             ;; slurping a file comes with a newline ext, however clj-http+http doen't seem to care?
             auth-token (or (System/getenv "GITHUB_TOKEN")
@@ -144,18 +144,15 @@
       (-> row (get "URL") java.net.URL. .getPath (subs 1))
       name)))
 
-(defn repo-name-doubler
-  [name]
-  (if (> (.indexOf name "/") -1)
-    name
-    (format "%s/%s" name name)))
-
 (defn github-data
   "if given row is a project hosted on github, fetch it's data and return it"
   [row]
   (when (github-hosted? row)
-    (let [url (str "https://api.github.com/repos/" (-> row (get "URL") java.net.URL. .getPath (subs 1)))] ;;(repo-name-doubler (github-repo-name row)))]
-      (-> url http-get json/read-str))))
+    (let [url (str "https://api.github.com/repos/" (-> row (get "URL") java.net.URL. .getPath (subs 1)))]
+      (try
+        (-> url http-get json/read-str)
+        (catch Exception e
+          (println "Error:" (.getMessage e)))))))
 
 ;; exceptions:
 ;; sysworx/wowam, I can't find the very recent commit it's talking about.
@@ -283,8 +280,8 @@
                        update-data
                        (to-sorted-vecs ordering))]
     (update-html! final-rows "resources/public/index.html")
-    (prn "wrote resources/public/index.html")
+    (println "wrote resources/public/index.html")
     
     (write-csv! final-rows "comrades.csv")
-    (prn "wrote comrades.csv"))
+    (println "wrote comrades.csv"))
   nil)
