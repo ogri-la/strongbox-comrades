@@ -11,7 +11,8 @@
 (def comrades (macro/compile-time-comrades-csv)) ;; compile-time data
 
 ;; order the fields are read in
-(def -field-order [:name :url :maintained :linux :mac :windows :ui :retail :classic :classic-tbc
+(def -field-order [:name :url :maintained :linux :mac :windows :ui
+                   :retail :classic :classic-tbc
                    :f-oss :software-licence :source-available :eula :ads :language
                    :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons
                    :feature-catalog-search :feature-wago.io])
@@ -25,8 +26,8 @@
    ;; we need this to know how to create and check permalinks
    :selectable-fields [:maintained :linux :mac :windows :ui :retail :classic :classic-tbc
                        :f-oss :software-licence :source-available :eula :ads :language
-                       :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons
-                       :feature-catalog-search :feature-wago.io]
+                       :feature-curseforge :feature-wowinterface :feature-tukui :feature-wago.io :feature-vcs-addons
+                       :feature-catalog-search]
 
    ;; map of :name and :description for selected preset
    :profile nil
@@ -40,13 +41,13 @@
 
 (def profiles
   {:default {:description "some basic filtering, good for everybody"
-             :field-order (into [:project] (remove #{:ads :eula :source-available :software-licence :f-oss :language :feature-vcs-addons :feature-wago.io} -field-order))
+             :field-order (into [:project] (remove #{:ads :eula :source-available :software-licence :f-oss :language :feature-wago.io} -field-order))
              :selected-fields {:maintained "yes"
                                :retail "yes"
                                :classic "yes"
                                :classic-tbc "yes"
-                               :feature-curseforge "yes"
-                               :feature-wowinterface "yes"}}
+                               :feature-wowinterface "yes"
+                               }}
    
    :unfiltered {:description "no filtering, ordered by 'maintained' and then by 'name'"
                 :selected-fields (zipmap (:selectable-fields -state-template) (repeat unselected))}
@@ -54,38 +55,45 @@
    :linux {:description "good choices for Linux users"
            :field-order [:project :retail :classic :classic-tbc :ui :f-oss :source-available :software-licence :ads :eula
                          :language
-                         :feature-curseforge :feature-wowinterface :feature-tukui
+                         :feature-wowinterface :feature-tukui :feature-vcs-addons :feature-curseforge
                          :feature-catalog-search]
            :selected-fields {:maintained "yes"
                              :linux "yes*"
                              :source-available "yes"
                              :ads "no" :eula "no"
-                             :retail "yes" :classic "yes"}}
+                             :retail "yes" :classic "yes" :classic-tbc "yes"
+                             }}
    
-   :mac {:description "good choices for mac users"
+   :mac {:description "good choices for macOS users"
          :field-order [:project :retail :classic :classic-tbc :ui
-                       :feature-curseforge :feature-wowinterface :feature-tukui
+                       :feature-wowinterface :feature-tukui :feature-vcs-addons :feature-curseforge 
                        :feature-catalog-search]
          :selected-fields {:maintained "yes"
                            :mac "yes*"
-                           :retail "yes" :classic "yes"}}
+                           :retail "yes" :classic "yes" :classic-tbc "yes"
+                           :feature-catalog-search "yes"}}
 
-   :windows {:description "good choices for windows users"
+   :windows {:description "good choices for Windows users"
              :field-order [:project :retail :classic :classic-tbc :ui
-                           :feature-curseforge :feature-wowinterface :feature-tukui
+                           :feature-wowinterface :feature-tukui :feature-vcs-addons :feature-curseforge
                            :feature-catalog-search]
              :selected-fields {:maintained "yes"
                                :windows "yes"
-                               :retail "yes" :classic "yes"}}
+                               :retail "yes" :classic "yes" :classic-tbc "yes"}}
    
    :perfect {:description "perfect addon managers (tick all the right boxes)"
+             :field-order [:project :maintained :linux :mac :windows :ui
+                           :retail :classic :classic-tbc
+                           :f-oss :eula :ads
+                           :feature-wowinterface :feature-tukui :feature-vcs-addons :feature-curseforge
+                           :feature-catalog-search :feature-wago.io]
              :selected-fields {:maintained "yes"
                                :windows "yes" :mac "yes" :linux "yes"
                                :ui "GUI"
                                :retail "yes" :classic "yes" :classic-tbc "yes"
                                :ads "no" :eula "no" :f-oss "yes"
-                               :feature-curseforge "yes"
                                :feature-wowinterface "yes"
+                               :feature-vcs-addons "yes*"
                                :feature-catalog-search "yes"}}
    })
 

@@ -131,7 +131,7 @@ or compilation or similar."]
 This may be an AUR, DEB, RPM/DNF, Snap, Flatpak, Zypper, AppImage, etc."]
    [:li [:strong [:code "*"]] " UI caveat: support for this UI varies across operating systems."]
    [:li [:strong [:code "*"]] " VCS caveat: only supports VCS through services like Github/Bitbucket/Gitlab and not git/hg/svn etc directly."]
-   [:li [:a {:href "https://github.com/ogri-la/strongbox-comrades/issues" :target "_blank"} "report any issues here"]]])
+   [:li [:a {:href "https://github.com/ogri-la/strongbox-comrades/issues" :target "_blank"} "report issues here"]]])
 
 (rum/defc root-component < rum/reactive
   []
