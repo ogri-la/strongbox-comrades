@@ -15,7 +15,7 @@
                    :retail :classic :classic-tbc
                    :f-oss :software-licence :source-available :eula :ads :language
                    :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons
-                   :feature-catalog-search :feature-wago.io])
+                   :feature-catalog-search])
 
 (def -state-template
   {;; fields are displayed in the order they are read in by default
@@ -26,7 +26,7 @@
    ;; we need this to know how to create and check permalinks
    :selectable-fields [:maintained :linux :mac :windows :ui :retail :classic :classic-tbc
                        :f-oss :software-licence :source-available :eula :ads :language
-                       :feature-curseforge :feature-wowinterface :feature-tukui :feature-wago.io :feature-vcs-addons
+                       :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons
                        :feature-catalog-search]
 
    ;; map of :name and :description for selected preset
@@ -41,12 +41,15 @@
 
 (def profiles
   {:default {:description "some basic filtering, good for everybody"
-             :field-order (into [:project] (remove #{:ads :eula :source-available :software-licence :f-oss :language :feature-wago.io} -field-order))
+             ;;:field-order (into [:project] (remove #{:ads :eula :source-available :software-licence :f-oss :language } -field-order))
+             :field-order [:project :maintained :linux :mac :windows :ui
+                           :retail :classic :classic-tbc
+                           :feature-wowinterface :feature-tukui :feature-vcs-addons :feature-curseforge
+                           :feature-catalog-search]
              :selected-fields {:maintained "yes"
                                :retail "yes"
                                :classic "yes"
                                :classic-tbc "yes"
-                               :feature-wowinterface "yes"
                                }}
    
    :unfiltered {:description "no filtering, ordered by 'maintained' and then by 'name'"
@@ -86,7 +89,7 @@
                            :retail :classic :classic-tbc
                            :f-oss :eula :ads
                            :feature-wowinterface :feature-tukui :feature-vcs-addons :feature-curseforge
-                           :feature-catalog-search :feature-wago.io]
+                           :feature-catalog-search]
              :selected-fields {:maintained "yes"
                                :windows "yes" :mac "yes" :linux "yes"
                                :ui "GUI"
