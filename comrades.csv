@@ -72,7 +72,7 @@ Kumodatsu/wow-addon-manager,https://github.com/Kumodatsu/wow-addon-manager,yes,n
 layday/instawow,https://github.com/layday/instawow,yes,yes,yes,yes,GUI,yes,yes,yes,yes,GPL-3.0,yes,no,no,Python,yes,yes,yes,yes*,yes
 MBODM/WADM,https://github.com/MBODM/WADM,yes,no,no,yes,GUI,yes,no,no,yes,MIT,yes,no,no,C#,yes,no,no,no,no
 MR2011/wowAddonManager,https://github.com/MR2011/wowAddonManager,yes,yes,no,no,TUI,yes,yes,yes,yes,MIT,yes,no,no,Rust,yes,no,no,no,yes
-ogri-la/strongbox,https://github.com/ogri-la/strongbox,yes,yes,yes*,no,GUI,yes,yes,yes,yes,AGPL-3.0,yes,no,no,Clojure,yes,yes,yes,yes*,yes
+ogri-la/strongbox,https://github.com/ogri-la/strongbox,yes,yes,yes*,no,GUI,yes,yes,yes,yes,AGPL-3.0,yes,no,no,Clojure,no,yes,yes,yes*,yes
 Overwolf App,https://curseforge.overwolf.com,yes,no,yes,yes,GUI,yes,yes,yes,no,noassertion,no,yes,yes,?,yes,no,no,no,yes
 Tukui Client,https://www.tukui.org/download.php?client=win,yes,no,no,yes,GUI,yes,no,no,no,noassertion,no,?,?,?,no,no,yes,no,yes
 unly/wow-addon-updater,https://github.com/unly/wow-addon-updater,yes,yes*,yes,yes,CLI,yes,yes,yes,yes,MIT,yes,no,no,Go,no,yes,yes,yes*,no
