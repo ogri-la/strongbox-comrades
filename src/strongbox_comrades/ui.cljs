@@ -125,11 +125,10 @@
   []
   [:ul
    [:li "Maintained: an addon manager is considered 'maintained' if it has seen an update in 12 months."]
-   [:li [:strong [:code "*"]] " OS caveat: when " [:em "separate installation"] " of other software like Python, Java, NPM or GTK/QT, etc is required, 
-or compilation or similar."]
-   [:li [:strong [:code "*"]] " Linux OS caveat: if a packaged version of the addon manager exists for " [:em "at least one"] " distribution of Linux, I drop the caveat asterisk.
-This may be an AUR, DEB, RPM/DNF, Snap, Flatpak, Zypper, AppImage, etc."]
-   [:li [:strong [:code "*"]] " UI caveat: support for this UI varies across operating systems."]
+   [:li [:strong [:code "*"]] " Curseforge caveat: support depends on the old API, which is deprecated."]
+   [:li [:strong [:code "*"]] " OS caveat: when " [:em "separate installation"] " of other software like Python, Java, NPM or GTK/QT, etc is required, or compilation or similar."]
+   [:li [:strong [:code "*"]] " Linux OS caveat: if a packaged version of the addon manager exists for " [:em "at least one"] " distribution of Linux, I drop the caveat asterisk. This may be an AUR, DEB, RPM/DNF, Snap, Flatpak, Zypper, AppImage, etc."]
+   ;;[:li [:strong [:code "*"]] " UI caveat: support for this UI varies across operating systems."]
    [:li [:strong [:code "*"]] " VCS caveat: only supports VCS through services like Github/Bitbucket/Gitlab and not git/hg/svn etc directly."]
    [:li [:a {:href "https://github.com/ogri-la/strongbox-comrades/issues" :target "_blank"} "report issues here"]]])
 
@@ -148,8 +147,11 @@ This may be an AUR, DEB, RPM/DNF, Snap, Flatpak, Zypper, AppImage, etc."]
                      ;; 'yes*' (yes, but ...) also means 'yes'
                      (= match-value "yes*") (utils/in? row-value [match-value "yes"])
 
+                     ;; 'no*' (no, but ...) also means 'no'
+                     (= match-value "no*") (utils/in? row-value [match-value "no"])
+
                      ;; just instawow for now
-                     (= match-value "GUI*") (utils/in? row-value [match-value "GUI"])
+                     ;;(= match-value "GUI*") (utils/in? row-value [match-value "GUI"])
 
                      ;; empty string means "don't filter"
                      (= match-value "") true
