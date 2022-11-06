@@ -82,5 +82,5 @@ Overwolf App,https://curseforge.overwolf.com,yes,no,yes,yes,GUI,yes,yes,yes,yes,
 Tukui Client,https://www.tukui.org/download.php?client=win,yes,no,no,yes,GUI,yes,no,no,yes,no,noassertion,no,?,?,?,no,no,yes,no,yes
 unly/wow-addon-updater,https://github.com/unly/wow-addon-updater,yes,yes*,yes,yes,CLI,yes,yes,yes,yes,yes,MIT,yes,no,no,Go,no,yes,yes,yes*,no
 wowmatrix,https://www.wowmatrix.com/,yes,yes,yes,yes,GUI,yes,no,no,no,no,noassertion,no,yes,yes,?,no,no,no,no,yes
-WowUp/WowUp,https://github.com/WowUp/WowUp,yes,yes,yes,yes,GUI,yes,yes,yes,yes,yes,GPL-3.0,yes,yes,yes,TypeScript,no*,yes,yes,yes*,yes
-WowUp/WowUp.CF,https://github.com/WowUp/WowUp.CF/,yes,yes,yes,yes,GUI,yes,yes,yes,yes,no,noassertion,yes,yes,yes,TypeScript,yes,no,no,no,yes
+WowUp/WowUp,https://github.com/WowUp/WowUp,yes,yes,yes,yes,GUI,yes,yes,yes,yes,yes,GPL-3.0,yes,yes,yes,TypeScript,no,yes,yes,yes*,yes
+WowUp/WowUp.CF,https://github.com/WowUp/WowUp.CF/,yes,yes,yes,yes,GUI,yes,yes,yes,yes,no,noassertion,yes,yes,yes,TypeScript,yes,yes,yes,yes*,yes
