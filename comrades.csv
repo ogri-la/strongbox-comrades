@@ -74,7 +74,6 @@ dbrizov/wow-addons-updater,https://github.com/dbrizov/wow-addons-updater,yes,yes
 erikabp123/ClassicAddonManager,https://github.com/erikabp123/ClassicAddonManager,yes,no,no,yes,GUI,yes,yes,yes,no,yes,GPL-3.0,yes,no,no,Java,no*,yes,yes,yes*,yes
 Gonzih/wow-addon-manager,https://github.com/Gonzih/wow-addon-manager,yes,yes*,yes*,yes*,CLI,yes,yes,yes,yes,yes,MIT,yes,no,no,Go,yes,no,no,no,no
 JackBister/wow-addon-manager,https://github.com/JackBister/wow-addon-manager,yes,yes*,yes*,yes*,CLI,yes,yes,yes,yes,no,noassertion,yes,no,no,Go,yes,no,no,no,no
-jliddev/WowUp,https://github.com/jliddev/WowUp,yes,yes,yes,yes,GUI,yes,yes,yes,yes,yes,GPL-3.0,yes,yes,yes,TypeScript,no*,yes,yes,yes*,yes
 layday/instawow,https://github.com/layday/instawow,yes,yes,yes,yes,GUI,yes,yes,yes,yes,yes,GPL-3.0,yes,no,no,Python,no*,yes,yes,yes*,yes
 Lesona-Systems/Underwolf,https://github.com/Lesona-Systems/Underwolf,yes,yes,yes,yes,CLI,yes,no,no,no,yes,BSD-2-Clause,yes,no,no,Python,yes,no,no,no,no
 MRSchexnayder/tukui-ps,https://github.com/MRSchexnayder/tukui-ps,yes,no,no,yes,CLI,yes,yes,yes,yes,yes,GPL-3.0,yes,no,no,PowerShell,no,no,yes,no,no
@@ -83,3 +82,5 @@ Overwolf App,https://curseforge.overwolf.com,yes,no,yes,yes,GUI,yes,yes,yes,yes,
 Tukui Client,https://www.tukui.org/download.php?client=win,yes,no,no,yes,GUI,yes,no,no,yes,no,noassertion,no,?,?,?,no,no,yes,no,yes
 unly/wow-addon-updater,https://github.com/unly/wow-addon-updater,yes,yes*,yes,yes,CLI,yes,yes,yes,yes,yes,MIT,yes,no,no,Go,no,yes,yes,yes*,no
 wowmatrix,https://www.wowmatrix.com/,yes,yes,yes,yes,GUI,yes,no,no,no,no,noassertion,no,yes,yes,?,no,no,no,no,yes
+WowUp/WowUp,https://github.com/WowUp/WowUp,yes,yes,yes,yes,GUI,yes,yes,yes,yes,yes,GPL-3.0,yes,yes,yes,TypeScript,no*,yes,yes,yes*,yes
+WowUp/WowUp.CF,https://github.com/WowUp/WowUp.CF/,yes,yes,yes,yes,GUI,yes,yes,yes,yes,no,noassertion,yes,yes,yes,TypeScript,yes,no,no,no,yes
