@@ -42,6 +42,7 @@ SaulLawliet/manage-wow-addons,https://github.com/SaulLawliet/manage-wow-addons,n
 SeriousBug/WoWutils,https://github.com/SeriousBug/WoWutils,no,yes*,no,no,CLI,yes,no,no,no,yes,GPL-3.0,yes,no,no,Shell,yes,no,no,no,no
 Tharre/pywamgr,https://github.com/Tharre/pywamgr,no,yes*,yes*,yes*,CLI,yes,no,no,no,yes,MIT,yes,no,no,Python,yes,no,no,no,no
 TiredCoders/wow-pantheon,https://github.com/TiredCoders/wow-pantheon,no,no,no,yes*,GUI,yes,yes,no,no,no,noassertion,yes,no,no,JavaScript,yes,no,no,no,yes
+unly/wow-addon-updater,https://github.com/unly/wow-addon-updater,no,yes*,yes,yes,CLI,yes,yes,yes,yes,yes,MIT,yes,no,no,Go,no,yes,yes,yes*,no
 varexi/slipstream,https://github.com/varexi/slipstream,no,no,yes,yes,GUI,yes,yes,no,no,yes,GPL-3.0,yes,no,no,TypeScript,yes,no,no,no,yes
 vargen2/addonmanager,https://github.com/vargen2/addonmanager,no,no,no,yes*,GUI,yes,no,no,no,yes,MIT,yes,no,no,Java,yes,no,no,no,yes
 woblight/GitAddonsManager,https://gitlab.com/woblight/GitAddonsManager,no,yes*,no,yes*,GUI,yes,no,no,no,yes,GPL-3.0,yes,no,no,C++,no,no,no,yes,no
@@ -80,7 +81,6 @@ MRSchexnayder/tukui-ps,https://github.com/MRSchexnayder/tukui-ps,yes,no,no,yes,C
 ogri-la/strongbox,https://github.com/ogri-la/strongbox,yes,yes,yes*,no,GUI,yes,yes,yes,yes,yes,AGPL-3.0,yes,no,no,Clojure,no,yes,yes,yes*,yes
 Overwolf App,https://curseforge.overwolf.com,yes,no,yes,yes,GUI,yes,yes,yes,yes,no,noassertion,no,yes,yes,?,yes,no,no,no,yes
 Tukui Client,https://www.tukui.org/download.php?client=win,yes,no,no,yes,GUI,yes,no,no,yes,no,noassertion,no,?,?,?,no,no,yes,no,yes
-unly/wow-addon-updater,https://github.com/unly/wow-addon-updater,yes,yes*,yes,yes,CLI,yes,yes,yes,yes,yes,MIT,yes,no,no,Go,no,yes,yes,yes*,no
 wowmatrix,https://www.wowmatrix.com/,yes,yes,yes,yes,GUI,yes,no,no,no,no,noassertion,no,yes,yes,?,no,no,no,no,yes
 WowUp/WowUp,https://github.com/WowUp/WowUp,yes,yes,yes,yes,GUI,yes,yes,yes,yes,yes,GPL-3.0,yes,yes,yes,TypeScript,no,yes,yes,yes*,yes
 WowUp/WowUp.CF,https://github.com/WowUp/WowUp.CF/,yes,yes,yes,yes,GUI,yes,yes,yes,yes,no,noassertion,yes,yes,yes,TypeScript,yes,yes,yes,yes*,yes

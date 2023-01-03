@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "generating 'comrades.csv' from 'comrades.raw'"
+echo "generating 'comrades.csv' from 'comrades.raw.csv'"
 lein run
 
 echo "Compiling Javascript"
