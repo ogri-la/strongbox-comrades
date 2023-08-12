@@ -12,7 +12,7 @@
 
 ;; order the fields are read in
 (def -field-order [:name :url :maintained :linux :mac :windows :ui
-                   :retail :classic :classic-tbc :classic-wotlk
+                   :retail :classic
                    :f-oss :software-licence :source-available :eula :ads :language
                    :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons
                    :feature-catalog-search])
@@ -24,7 +24,7 @@
 
    ;; fields that can be selected
    ;; we need this to know how to create and check permalinks
-   :selectable-fields [:maintained :linux :mac :windows :ui :retail :classic :classic-tbc :classic-wotlk
+   :selectable-fields [:maintained :linux :mac :windows :ui :retail :classic
                        :f-oss :software-licence :source-available :eula :ads :language
                        :feature-curseforge :feature-wowinterface :feature-tukui :feature-vcs-addons
                        :feature-catalog-search]
@@ -43,21 +43,19 @@
   {:default {:description "some basic filtering, good for everybody"
              ;;:field-order (into [:project] (remove #{:ads :eula :source-available :software-licence :f-oss :language } -field-order))
              :field-order [:project :maintained :linux :mac :windows :ui
-                           :retail :classic :classic-tbc :classic-wotlk
+                           :retail :classic
                            :feature-wowinterface :feature-tukui :feature-vcs-addons :feature-curseforge
                            :feature-catalog-search]
              :selected-fields {:maintained "yes"
                                :retail "yes"
                                :classic "yes"
-                               :classic-tbc "yes"
-                               :classic-wotlk "yes"
                                }}
    
    :unfiltered {:description "no filtering, ordered by 'maintained' and then by 'name'"
                 :selected-fields (zipmap (:selectable-fields -state-template) (repeat unselected))}
 
    :linux {:description "good choices for Linux users"
-           :field-order [:project :retail :classic :classic-tbc :classic-wotlk :ui :f-oss :source-available :software-licence :ads :eula
+           :field-order [:project :retail :classic :ui :f-oss :source-available :software-licence :ads :eula
                          :language
                          :feature-wowinterface :feature-tukui :feature-vcs-addons :feature-curseforge
                          :feature-catalog-search]
@@ -65,36 +63,36 @@
                              :linux "yes*"
                              :source-available "yes"
                              :ads "no" :eula "no"
-                             :retail "yes" :classic "yes" :classic-tbc "yes" :classic-wotlk "yes"
+                             :retail "yes" :classic "yes"
                              }}
    
    :mac {:description "good choices for macOS users"
-         :field-order [:project :retail :classic :classic-tbc :classic-wotlk :ui
+         :field-order [:project :retail :classic :ui
                        :feature-wowinterface :feature-tukui :feature-vcs-addons :feature-curseforge 
                        :feature-catalog-search]
          :selected-fields {:maintained "yes"
                            :mac "yes*"
-                           :retail "yes" :classic "yes" :classic-tbc "yes" :classic-wotlk "yes"
+                           :retail "yes" :classic "yes"
                            :feature-catalog-search "yes"}}
 
    :windows {:description "good choices for Windows users"
-             :field-order [:project :retail :classic :classic-tbc :classic-wotlk :ui
+             :field-order [:project :retail :classic :ui
                            :feature-wowinterface :feature-tukui :feature-vcs-addons :feature-curseforge
                            :feature-catalog-search]
              :selected-fields {:maintained "yes"
                                :windows "yes"
-                               :retail "yes" :classic "yes" :classic-tbc "yes" :classic-wotlk "yes"}}
+                               :retail "yes" :classic "yes"}}
    
    :perfect {:description "perfect addon managers (tick all the right boxes)"
              :field-order [:project :maintained :linux :mac :windows :ui
-                           :retail :classic :classic-tbc :classic-wotlk
+                           :retail :classic
                            :f-oss :eula :ads
                            :feature-wowinterface :feature-tukui :feature-vcs-addons :feature-curseforge
                            :feature-catalog-search]
              :selected-fields {:maintained "yes"
                                :windows "yes" :mac "yes" :linux "yes"
                                :ui "GUI"
-                               :retail "yes" :classic "yes" :classic-tbc "yes" :classic-wotlk "yes"
+                               :retail "yes" :classic "yes"
                                :ads "no" :eula "no" :f-oss "yes"
                                :feature-wowinterface "yes"
                                :feature-vcs-addons "yes*"
@@ -102,7 +100,6 @@
    })
 
 ;;
-
 
 (defn rows-to-maps
   "converts a regular array of values into a keyed map.
